@@ -1,0 +1,6 @@
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.dll
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.pdb
+D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csprojAssemblyReference.cache
+D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CoreCompileInputs.cache
+D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.dll
+D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.pdb

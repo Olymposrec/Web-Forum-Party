@@ -1,0 +1,6 @@
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Business.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Business.pdb
+D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.csprojAssemblyReference.cache
+D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.csproj.CoreCompileInputs.cache
+D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.dll
+D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.pdb
