@@ -4,3 +4,12 @@ D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.cspro
 D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CoreCompileInputs.cache
 D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.dll
 D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.pdb
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.dll.config
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.dll
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.xml
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CopyComplete
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\FakeData.dll
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\FakeData.pdb
+D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\UrlRewritingNet.UrlRewriter.dll

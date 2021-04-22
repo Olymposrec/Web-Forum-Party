@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ForumPartyModelStoreContainer" CdmEntityContainer="ForumPartyEntities1">
+    <EntitySetMapping Name="AboutUsers">
+      <EntityTypeMapping TypeName="ForumPartyModel.AboutUsers">
+        <MappingFragment StoreEntitySet="AboutUsers">
+          <ScalarProperty Name="UsersInfoID" ColumnName="UsersInfoID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SurName" ColumnName="SurName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adress">
+      <EntityTypeMapping TypeName="ForumPartyModel.Adress">
+        <MappingFragment StoreEntitySet="Adress">
+          <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+          <ScalarProperty Name="Road" ColumnName="Road" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Neighborhood" ColumnName="Neighborhood" />
+          <ScalarProperty Name="ApartmenNo" ColumnName="ApartmenNo" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="ForumPartyModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Communities">
+      <EntityTypeMapping TypeName="ForumPartyModel.Communities">
+        <MappingFragment StoreEntitySet="Communities">
+          <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+          <ScalarProperty Name="CommunityName" ColumnName="CommunityName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommunityPermissions">
+      <EntityTypeMapping TypeName="ForumPartyModel.CommunityPermissions">
+        <MappingFragment StoreEntitySet="CommunityPermissions">
+          <ScalarProperty Name="CommunityPermID" ColumnName="CommunityPermID" />
+          <ScalarProperty Name="PermDescription" ColumnName="PermDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="ForumPartyModel.Images">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="ForumPartyModel.Posts">
+        <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivacyStatement">
+      <EntityTypeMapping TypeName="ForumPartyModel.PrivacyStatement">
+        <MappingFragment StoreEntitySet="PrivacyStatement">
+          <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
+          <ScalarProperty Name="PrivacyState" ColumnName="PrivacyState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="ForumPartyModel.Questions">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestDescript" ColumnName="QuestDescript" />
+          <ScalarProperty Name="Option1" ColumnName="Option1" />
+          <ScalarProperty Name="Option2" ColumnName="Option2" />
+          <ScalarProperty Name="Option3" ColumnName="Option3" />
+          <ScalarProperty Name="Option4" ColumnName="Option4" />
+          <ScalarProperty Name="Option5" ColumnName="Option5" />
+          <ScalarProperty Name="Option6" ColumnName="Option6" />
+          <ScalarProperty Name="Option7" ColumnName="Option7" />
+          <ScalarProperty Name="Option8" ColumnName="Option8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Surveys">
+      <EntityTypeMapping TypeName="ForumPartyModel.Surveys">
+        <MappingFragment StoreEntitySet="Surveys">
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ForumPartyModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ForumPartyModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserMail" ColumnName="UserMail" />
+          <ScalarProperty Name="UsersStateID" ColumnName="UsersStateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersState">
+      <EntityTypeMapping TypeName="ForumPartyModel.UsersState">
+        <MappingFragment StoreEntitySet="UsersState">
+          <ScalarProperty Name="UserStateID" ColumnName="UserStateID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,13 @@
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\Party.Entities.dll
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\Party.Entities.pdb
+D:\VisualStudio2019\ForumParty\Party.Entities\obj\Debug\Party.Entities.csprojAssemblyReference.cache
+D:\VisualStudio2019\ForumParty\Party.Entities\obj\Debug\Party.Entities.csproj.CoreCompileInputs.cache
+D:\VisualStudio2019\ForumParty\Party.Entities\obj\Debug\Party.Entities.dll
+D:\VisualStudio2019\ForumParty\Party.Entities\obj\Debug\Party.Entities.pdb
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\Party.Entities.dll.config
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\EntityFramework.dll
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\EntityFramework.SqlServer.dll
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\EntityFramework.xml
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\EntityFramework.SqlServer.xml
+D:\VisualStudio2019\ForumParty\Party.Entities\obj\Debug\Party.Entities.csproj.CopyComplete
+D:\VisualStudio2019\ForumParty\Party.Entities\bin\Debug\UrlRewritingNet.UrlRewriter.dll

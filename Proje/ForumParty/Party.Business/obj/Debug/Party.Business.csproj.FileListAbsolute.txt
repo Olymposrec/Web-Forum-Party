@@ -4,3 +4,15 @@ D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.csprojAss
 D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.csproj.CoreCompileInputs.cache
 D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.dll
 D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.pdb
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Business.dll.config
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\EntityFramework.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\EntityFramework.xml
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\VisualStudio2019\ForumParty\Party.Business\obj\Debug\Party.Business.csproj.CopyComplete
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\UrlRewritingNet.UrlRewriter.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\FakeData.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\FakeData.pdb
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.pdb
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.dll.config

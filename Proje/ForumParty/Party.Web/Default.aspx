@@ -4,24 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    
     <title>Party: Forum</title>
     
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content="Party is a forum site where communities come together. "/>
-  <meta name="author" content="Melih Akkose"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Party is a forum site where communities come together. "/>
+    <meta name="author" content="Melih Akkose"/>
 
     <!-- Icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
 
-      <!-- Bootstrap core JavaScript -->
-<script src="Resource/jquery/jquery.min.js"></script>
-<script src="Resource/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="Resource/jquery/jquery.min.js"></script>
+    <script src="Resource/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core CSS -->
-<link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Custom styles for this template -->
+     <!-- Custom styles for this template -->
+    
     <link href="Resource/css/blog-home.css" rel="stylesheet" />
 </head>
 <body>
@@ -32,12 +34,14 @@
 
     <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> Party Forum</a>
+    <div class="container mr-auto">
+
+      <a class="navbar-brand mb-0 h1 " href="#">
+        <img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> Party Forum </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+         
                  <!-- Search Widget -->
 
         <div class="container">
@@ -56,26 +60,34 @@
         </div>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="navbar-brand" href="#">Forum</a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="#">Polls</a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="#">Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="#">Log In / Sign In</a>
-          </li>
-          
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#"><i class="bi bi-archive-fill"></i> Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#"><i class="bi bi-border-width"></i> Polls</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#"><i class="bi bi-chat-left-text-fill"></i> Messages</a>
+                </li>
+            </ul>
+          <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+                <a class="navbar-brand" href="#"><i class="bi bi-box-arrow-right"></i> Log In</a>
+             </li>  
+             <li class="nav-item">
+                <a class="navbar-brand" href="#"><i class="bi bi-box-arrow-left"></i> Log Out</a>
+             </li>
         </ul>
+
       </div>
+       
+
     </div>  
   </nav>
     <header class="jumbotron my-4">
-      <h3 text-align="center">Trending Today</h3>
+      <h3 <%--text-align="center"--%>>Trending Today</h3>
       <div class="container text-center">
           <div class="row">
              <div class="card text-white bg-secondary mb-3 mx-2" style="width: 16rem;">
@@ -139,15 +151,13 @@
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"/>
           <div class="card-body">
             <h2 class="card-title">Example Content</h2>
+            <h6 class="align-content-sm-end"><i class="bi bi-clock-fill"></i> 01.02.2016</h6>
+              <h6 class="align-content-sm-end"><i class="bi bi-person-fill"></i> Olympos</h6>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
             <button type="button" class="btn btn-success"><i class="bi bi-chevron-up"></i> 46 </button>
             <button type="button" class="btn btn-danger"><i class="bi bi-chevron-down"></i> 32</button>
             <button type="button" class="btn btn-info">Detail <i class="bi bi-info-circle-fill"></i></button>
             <button type="button" class="btn btn-primary">Comment <i class="bi bi-chat-square-text"></i></button>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Vega</a>
           </div>
         </div>
 
@@ -156,15 +166,13 @@
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"/>
           <div class="card-body">
             <h2 class="card-title">Example Content</h2>
+            <h6 class="align-content-sm-end"><i class="bi bi-clock-fill"></i> 01.02.2016</h6>
+              <h6 class="align-content-sm-end"><i class="bi bi-person-fill"></i> Vega</h6>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
             <button type="button" class="btn btn-success"><i class="bi bi-chevron-up"></i> 46 </button>
             <button type="button" class="btn btn-danger"><i class="bi bi-chevron-down"></i> 32</button>
             <button type="button" class="btn btn-info">Detail <i class="bi bi-info-circle-fill"></i></button>
             <button type="button" class="btn btn-primary">Comment <i class="bi bi-chat-square-text"></i></button>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Olympos</a>
           </div>
         </div>
 
@@ -173,15 +181,13 @@
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"/>
           <div class="card-body">
             <h2 class="card-title">Example Content</h2>
+            <h6 class="align-content-sm-end"><i class="bi bi-clock-fill"></i> 01.02.2016</h6>
+              <h6 class="align-content-sm-end"><i class="bi bi-person-fill"></i> Freud</h6>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
             <button type="button" class="btn btn-success"><i class="bi bi-chevron-up"></i> 46 </button>
             <button type="button" class="btn btn-danger"><i class="bi bi-chevron-down"></i> 32</button>
             <button type="button" class="btn btn-info">Detail <i class="bi bi-info-circle-fill"></i></button>
             <button type="button" class="btn btn-primary">Comment <i class="bi bi-chat-square-text"></i></button>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Closer</a>
           </div>
         </div>
 
