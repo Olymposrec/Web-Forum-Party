@@ -11,7 +11,27 @@ namespace Party.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
+            if (Session["UserName"] != null)
+            {
+                Business.Users test = new Business.Users();
+                Repeater1.DataSource = test.PostListele();
+                Repeater1.DataBind();
+            }
+            else
+            {
+                Business.Users test = new Business.Users();
+                Repeater1.DataSource = test.PostListele();
+                Repeater1.DataBind();
+            }
+        }
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
 
         }
+
+        
     }
 }

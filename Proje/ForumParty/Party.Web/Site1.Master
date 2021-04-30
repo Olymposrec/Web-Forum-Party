@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Party.Web.Site1" %>
 
-<!DOCTYPE html>
+<!DOCTYPE  HTML PUBLIC "-//W3C//DTD HTML 4.01 //EN">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="Party is a forum site where communities come together. "/>
     <meta name="author" content="Melih Akkose"/>
-
     <!-- Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
 
@@ -28,67 +27,65 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-           
-        </div>
-    </form>
+    <form runat="server">
      <!-- Navigation -->
+     
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container mr-auto">
-
-      <a class="navbar-brand mb-0 h1 " href="#">
-        <img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> Party Forum </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-         
-                 <!-- Search Widget -->
-
-        <div class="container">
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for..."/>
-              <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
+        <asp:LinkButton ID="LinkButton7" runat="server"  OnClick="HomePage_Click" class="navbar-brand" type="button">
+           <img width="25" height="25" class="rounded-circle" src="Resource/images/homepageLogo2.jpg" /> <span class="navbar-brand mb-0 h1"> Party Forum</span>
+        </asp:LinkButton>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
-
-            <ul class="navbar-nav mr-auto">
+         
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#"><i class="bi bi-archive-fill"></i> Forum</a>
+                    <asp:LinkButton ID="lnkbtn_ForumPage" runat="server"  OnClick="ForumPage_Click" class="navbar-brand" type="button"><i class="bi bi-archive-fill"></i> Forum</asp:LinkButton>
+             
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#"><i class="bi bi-border-width"></i> Polls</a>
+                    <asp:LinkButton ID="lnkbtn_PollsPage" runat="server"  OnClick="PollsPage_Click" class="navbar-brand" type="button"><i class="bi bi-border-width"></i> Polls</asp:LinkButton>
+                    <a class="navbar-brand" href="#"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#"><i class="bi bi-chat-left-text-fill"></i> Messages</a>
+                    <asp:LinkButton ID="lnkbtn_MessagePage" runat="server"  OnClick="MessagesPage_Click" class="navbar-brand" type="button"><i class="bi bi-chat-left-text-fill"></i> Messages</asp:LinkButton>
+                    
+                </li>
+                 <li class="nav-item">
+                    <asp:LinkButton ID="lnkbtn_MainPage" runat="server"  OnClick="MainPage_Click" class="navbar-brand" type="button"><i class="bi bi-person-circle"></i> Profil</asp:LinkButton>
+                    
                 </li>
             </ul>
           <ul class="navbar-nav ml-auto">
              <li class="nav-item">
-                <a class="navbar-brand" href="#"><i class="bi bi-box-arrow-right"></i> Log In</a>
+                 <asp:LinkButton ID="btn_login" runat="server"  OnClick="Login_Click" class="navbar-brand" type="button"><i class="bi bi-box-arrow-right"></i> Log In</asp:LinkButton>
              </li>  
              <li class="nav-item">
-                <a class="navbar-brand" href="#"><i class="bi bi-box-arrow-left"></i> Log Out</a>
+                 <asp:Label ID="lbl_session" runat="server" type="text" class="navbar-brand text-primary"></asp:Label>
+             </li>
+             <li class="nav-item">
+                 <asp:LinkButton ID="btn_logout" runat="server" OnClick="LogOut_Click" class="navbar-brand" type="button"><i class="bi bi-box-arrow-left"></i> Log Out</asp:LinkButton>
              </li>
         </ul>
-
       </div>
        
 
     </div>  
   </nav>
-    <header class="jumbotron my-4">
-
+    <header class="modal-header" style="margin-bottom:50px;height:max-content;" >
+         <!-- Search Widget -->
+          <div class="container">
+          <div class="card-body">
+            <div class="input-group">
+                <asp:TextBox ID="txt_search" runat="server"  class="form-control"  placeholder="Search for..."></asp:TextBox>
+              <span class="input-group-append">
+                  <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-secondary" type="button" OnClick="SearchData_Click"><i class="bi bi-search"></i></asp:LinkButton>
+                  <asp:LinkButton ID="LinkButton2" runat="server" class="btn btn-secondary" type="button" OnClick="AddPost_Click"><i class="bi bi-archive-fill"></i></asp:LinkButton>
+                  <asp:LinkButton ID="LinkButton3" runat="server" class="btn btn-secondary" type="button" OnClick="AddPoll_Click"><i class="bi bi-border-width"></i></asp:LinkButton>
+              </span>
+            </div>
+          </div>
+        </div>
     </header>
   <!-- Page Content -->
   <div class="container">
@@ -104,15 +101,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
+
 
       </div>
 
@@ -175,5 +164,6 @@
     </div>
     <!-- /.container -->
   </footer>
+        </form>
 </body>
 </html>

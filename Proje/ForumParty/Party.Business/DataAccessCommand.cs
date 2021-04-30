@@ -37,7 +37,6 @@ namespace Party.Business
             SqlCommand com = new SqlCommand(sorgu);
             SqlDataReader dr = com.ExecuteReader();
             return dr;
-            baglanti.ConnectionClose();
 
         }
     }

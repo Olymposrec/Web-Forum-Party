@@ -1481,7 +1481,12 @@
     <Content Include="icons\youtube.svg" />
     <Content Include="icons\zoom-in.svg" />
     <Content Include="icons\zoom-out.svg" />
+    <Content Include="LogInPage.aspx" />
+    <Content Include="MessagesPage.aspx" />
+    <Content Include="PollsPage.aspx" />
+    <Content Include="ProfilPage.aspx" />
     <Content Include="Resource\css\blog-home.css" />
+    <Content Include="Resource\css\LogIn.css" />
     <Content Include="Resource\images\business.png" />
     <Content Include="Resource\images\entertainment.png" />
     <Content Include="Resource\images\gaming.png" />
@@ -1497,6 +1502,7 @@
     <Content Include="Resource\css\bootstrap-reboot.min.css" />
     <Content Include="Resource\css\bootstrap.css" />
     <Content Include="Resource\css\bootstrap.min.css" />
+    <Content Include="Resource\images\test.jpg" />
     <Content Include="Resource\js\bootstrap.bundle.js" />
     <Content Include="Resource\js\bootstrap.bundle.min.js" />
     <Content Include="Resource\js\bootstrap.js" />
@@ -1621,6 +1627,34 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogInPage.aspx.cs">
+      <DependentUpon>LogInPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogInPage.aspx.designer.cs">
+      <DependentUpon>LogInPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesPage.aspx.cs">
+      <DependentUpon>MessagesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessagesPage.aspx.designer.cs">
+      <DependentUpon>MessagesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PollsPage.aspx.cs">
+      <DependentUpon>PollsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PollsPage.aspx.designer.cs">
+      <DependentUpon>PollsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilPage.aspx.cs">
+      <DependentUpon>ProfilPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfilPage.aspx.designer.cs">
+      <DependentUpon>ProfilPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

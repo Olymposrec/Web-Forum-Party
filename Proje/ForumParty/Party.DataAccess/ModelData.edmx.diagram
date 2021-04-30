@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7997eda8bc6a4e2d8ba7fe5890890378" Name="Diagram1">
-        <EntityTypeShape EntityType="ForumPartyModel.AboutUsers" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Adress" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+      <Diagram DiagramId="7997eda8bc6a4e2d8ba7fe5890890378" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="ForumPartyModel.AboutUsers" Width="1.5" PointX="15.875" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Adress" Width="1.5" PointX="18.5" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.Categories" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Communities" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Communities" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.CommunityPermissions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Images" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Posts" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.PrivacyStatement" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Questions" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Surveys" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Images" Width="1.5" PointX="8.625" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Posts" Width="1.5" PointX="7" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.PrivacyStatement" Width="1.5" PointX="12" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Questions" Width="1.5" PointX="13.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Surveys" Width="1.5" PointX="10" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.Users" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.UsersState" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.Users" Width="1.5" PointX="5.125" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.UsersState" Width="1.5" PointX="13.375" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="ForumPartyModel.FK_AboutUsers_Adress" ManuallyRouted="false" />
         <AssociationConnector Association="ForumPartyModel.FK_AboutUsers_Users" ManuallyRouted="false" />
         <AssociationConnector Association="ForumPartyModel.FK_Posts_Categories" ManuallyRouted="false" />

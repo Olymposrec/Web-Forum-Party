@@ -33,11 +33,17 @@ namespace Party.Web
             SqlConnection baglan = new SqlConnection(baglanti);
 
             //string sorgu = "insert into Users values('Asli','asfkposa213','Test@mail.com','5')";
-            string sorgu2 = "update Users set UsersStateID=1 Where  UserID=1";
+            //string sorgu2 = "update Users set UsersStateID=1 Where  UserID=1";
             //string sorgu3 = "delete from Users Where UserID=3";
-            baglan.Open();
-            SqlCommand com1 = new SqlCommand(sorgu2, baglan);
-            var deger1 = com1.ExecuteNonQuery();
+            //baglan.Open();
+            //SqlCommand com1 = new SqlCommand(sorgu2, baglan);
+            //var deger1 = com1.ExecuteNonQuery();
+
+            //Party.Business.Users nesne = new Business.Users();
+            //var sonuc = nesne.Listele();
+            //repeatData.DataSource = sonuc;
+            //repeatData.DataBind();
+
         }
 
         protected void textInput_TextChanged(object sender, EventArgs e)
@@ -94,6 +100,11 @@ namespace Party.Web
             Party.Business.Users veriSil = new Business.Users();
 
             var sonuc = veriSil.DeleteData(Convert.ToInt32(Text_UserID.Text));
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            TextBox1.Text = DateTime.Now.ToString();
         }
     }
 }

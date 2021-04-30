@@ -11,7 +11,7 @@ namespace Party.Web
 {
 
 
-    public partial class WebForm1
+    public partial class PollsPage
     {
 
         /// <summary>
