@@ -72,34 +72,34 @@ namespace Party.Web
             //GridView1.DataBind();
            
 
-            Party.Business.Users yeniVeri = new Business.Users();
-            Party.DataAccess.Users nesne = new DataAccess.Users();
-            nesne.UserName = FakeData.NameData.GetFirstName();
-            nesne.UserPassword = FakeData.TextData.GetAlphaNumeric(8);
-            nesne.UserMail = FakeData.NetworkData.GetEmail();
-            nesne.UsersStateID = 5;
-            var deger = yeniVeri.AddData(nesne);
+            //Party.Business.Users yeniVeri = new Business.Users();
+            //Party.DataAccess.Users nesne = new DataAccess.Users();
+            //nesne.UserName = FakeData.NameData.GetFirstName();
+            //nesne.UserPassword = FakeData.TextData.GetAlphaNumeric(8);
+            //nesne.UserMail = FakeData.NetworkData.GetEmail();
+            //nesne.UsersStateID = 5;
+            //var deger = yeniVeri.AddData(nesne);
 
 
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Party.Business.Users veriGuncelle = new Business.Users();
+            //Party.Business.Users veriGuncelle = new Business.Users();
 
-            Party.DataAccess.Users nesne2 = new DataAccess.Users();
-            nesne2.UserName = FakeData.NameData.GetFirstName();
-            nesne2.UserPassword = FakeData.TextData.GetAlphaNumeric(8);
-            nesne2.UserMail = FakeData.NetworkData.GetEmail();  
-            nesne2.UsersStateID = 5;
-            var sonuc = veriGuncelle.UpdateData(Convert.ToInt32(Text_UserID.Text), nesne2);
+            //Party.DataAccess.Users nesne2 = new DataAccess.Users();
+            //nesne2.UserName = FakeData.NameData.GetFirstName();
+            //nesne2.UserPassword = FakeData.TextData.GetAlphaNumeric(8);
+            //nesne2.UserMail = FakeData.NetworkData.GetEmail();  
+            //nesne2.UsersStateID = 5;
+            //var sonuc = veriGuncelle.UpdateData(Convert.ToInt32(Text_UserID.Text), nesne2);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Party.Business.Users veriSil = new Business.Users();
+            //Party.Business.Users veriSil = new Business.Users();
 
-            var sonuc = veriSil.DeleteData(Convert.ToInt32(Text_UserID.Text));
+            //var sonuc = veriSil.DeleteData(Convert.ToInt32(Text_UserID.Text));
         }
 
         protected void Button4_Click(object sender, EventArgs e)

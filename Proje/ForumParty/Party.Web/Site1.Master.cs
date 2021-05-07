@@ -51,11 +51,11 @@ namespace Party.Web
         }
         protected void AddPost_Click(object sender, EventArgs e)
         {
-            txt_search.Text = "AddPost_Click Work";
+            Response.Redirect("AddPostPage.aspx");
         }
         protected void AddPoll_Click(object sender, EventArgs e)
         {
-            txt_search.Text = "AddPoll_Click Work";
+            Response.Redirect("AddPollPage.aspx");
         }
         
         protected void ForumPage_Click(object sender, EventArgs e)

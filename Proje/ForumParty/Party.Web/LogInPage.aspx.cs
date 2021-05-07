@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Party.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,38 +8,85 @@ using System.Web.UI.WebControls;
 
 namespace Party.Web
 {
-    public partial class LogInPage : System.Web.UI.Page
+    public partial class LogInPage : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_registerResultDanger.Text = "";
+            lbl_registerResultSuccess.Text = "";
+            lbl_result.Text = "";
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
-            Party.Business.Users deneme = new Business.Users();
+            //Party.Business.Users deneme = new Business.Users();
             Party.DataAccess.Users usersInput = new DataAccess.Users();
             usersInput.UserName = txt_userName.Text;
             usersInput.UserPassword = txt_passWord.Text;
-            string returnVal = deneme.FindData(usersInput);
+            //string returnVal = deneme.FindData(usersInput);
 
-            if (txt_passWord.Text == "" && txt_userName.Text == "")
+            Repository<DataAccess.Users> repo = new Repository<DataAccess.Users>();
+            var returnVal = repo.Find(p => p.UserName == usersInput.UserName && p.UserPassword==usersInput.UserPassword);
+
+            if (txt_passWord.Text == "" || txt_userName.Text == "")
             {
                 lbl_result.Text = "Text Boxes Cannot Be Empty!";
-
+                
             }
             else
             {
                 if (returnVal != null)
-                    if (returnVal == "1")
+                {
+                    Session["UserName"] = txt_userName.Text;
+                    Response.Redirect("/HomePage.aspx");
+                }
+                else
+                {
+                    lbl_result.Text = "Incorrect Username or Password";
+                }
+            }
+        }
+
+
+
+        protected void register_Click(object sender, EventArgs e)
+        {
+            if (txt_confirmPasswordRegister.Text == "" || txt_passwordRegister.Text == "" || txt_usermailRegister.Text == "" || txt_usernameRegister.Text == "")
+            {
+                lbl_registerResultDanger.Text = "Text Boxes Cannot Be Empty!";
+            }
+            else
+            {
+                if (txt_passwordRegister.Text == txt_confirmPasswordRegister.Text)
+                {
+                    Repository<Party.DataAccess.Users> repo = new Repository<Party.DataAccess.Users>();
+                    
+                    DataAccess.Users newUser = new DataAccess.Users
                     {
-                        Session["UserName"] = txt_userName.Text;
-                        Response.Redirect("/HomePage.aspx");
+                        UserMail = txt_usermailRegister.Text,
+                        UsersStateID = 5,
+                        UserName = txt_usernameRegister.Text,
+                        UserPassword = txt_passwordRegister.Text
+                    };
+                    var checkUser = repo.Find(p => p.UserName == txt_usernameRegister.Text || p.UserMail == txt_usermailRegister.Text);
+                    if (checkUser != null)
+                    {
+                        lbl_registerResultDanger.Text = "User Name or Mail is Already Taken.";
                     }
-                    else if (returnVal == "-1")
-                        lbl_result.Text = "Incorrect Username or Password";
                     else
-                        lbl_result.Text = "User not found.";
+                    {
+                        repo.Insert(newUser);
+                        lbl_registerResultSuccess.Text = "Registration is successful.";
+
+                    }
+
+                    
+                }
+                else
+                {
+                    lbl_registerResultDanger.Text = "Confirmation Error!";
+                }
+
             }
         }
     }

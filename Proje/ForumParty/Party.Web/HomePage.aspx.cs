@@ -15,14 +15,16 @@ namespace Party.Web
 
             if (Session["UserName"] != null)
             {
-                Business.Users test = new Business.Users();
-                Repeater1.DataSource = test.PostListele();
+
+                Business.Posts test = new Business.Posts();
+                Repeater1.DataSource = test.SpecificGetPosts();
                 Repeater1.DataBind();
             }
             else
             {
-                Business.Users test = new Business.Users();
-                Repeater1.DataSource = test.PostListele();
+
+                Business.Posts test = new Business.Posts();
+                Repeater1.DataSource = test.SpecificGetPosts();
                 Repeater1.DataBind();
             }
         }

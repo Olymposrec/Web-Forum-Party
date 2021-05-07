@@ -16,3 +16,6 @@ D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\FakeData.pdb
 D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.dll
 D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.pdb
 D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.DataAccess.dll.config
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Web.dll
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Web.pdb
+D:\VisualStudio2019\ForumParty\Party.Business\bin\Debug\Party.Web.dll.config

@@ -43,9 +43,13 @@
     <Reference Include="FakeData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FakeData.1.0.0\lib\FakeData.dll</HintPath>
     </Reference>
+    <Reference Include="Party.Web">
+      <HintPath>..\Party.Web\bin\Party.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +63,9 @@
   <ItemGroup>
     <Compile Include="DataAccessClass.cs" />
     <Compile Include="DataAccessCommand.cs" />
+    <Compile Include="Posts.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryBase.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
