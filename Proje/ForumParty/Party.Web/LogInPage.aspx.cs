@@ -60,13 +60,19 @@ namespace Party.Web
                 if (txt_passwordRegister.Text == txt_confirmPasswordRegister.Text)
                 {
                     Repository<Party.DataAccess.Users> repo = new Repository<Party.DataAccess.Users>();
-                    
+                    Repository<Party.DataAccess.Communities> repo2 = new Repository<DataAccess.Communities>();
+
                     DataAccess.Users newUser = new DataAccess.Users
                     {
                         UserMail = txt_usermailRegister.Text,
                         UsersStateID = 5,
                         UserName = txt_usernameRegister.Text,
                         UserPassword = txt_passwordRegister.Text
+                    };
+
+                    DataAccess.Communities newCommunity = new DataAccess.Communities
+                    {
+                        CommunityName = txt_usernameRegister.Text
                     };
                     var checkUser = repo.Find(p => p.UserName == txt_usernameRegister.Text || p.UserMail == txt_usermailRegister.Text);
                     if (checkUser != null)
@@ -76,6 +82,8 @@ namespace Party.Web
                     else
                     {
                         repo.Insert(newUser);
+                        repo2.Insert(newCommunity);
+
                         lbl_registerResultSuccess.Text = "Registration is successful.";
 
                     }
