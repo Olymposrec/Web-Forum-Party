@@ -16,11 +16,13 @@ namespace Party.Web
                 lbl_session.Text = Session["UserName"].ToString();
                 btn_login.Visible = false;
                 btn_logout.Visible = true;
+                lnkbtn_MessagePage.Visible = true;
                 lnkbtn_MainPage.Visible = true;
             }
             else
             {
                 lnkbtn_MainPage.Visible = false;
+                lnkbtn_MessagePage.Visible = false;
                 btn_logout.Visible = false;
                 btn_login.Visible = true;
                 lbl_session.Text = "";

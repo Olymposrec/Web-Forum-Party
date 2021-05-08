@@ -44,6 +44,7 @@
     <Property Name="CommunityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Communities" FromRole="Communities" ToRole="Posts" />
+    <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Communities" FromRole="Communities" ToRole="UsersCommunity" />
   </EntityType>
   <EntityType Name="CommunityPermissions">
     <Key>
@@ -82,6 +83,7 @@
     <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
     <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
+    <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="PrivacyStatement">
     <Key>
@@ -151,6 +153,7 @@
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Users" FromRole="Users" ToRole="Posts" />
     <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Users" FromRole="Users" ToRole="Surveys" />
     <NavigationProperty Name="UsersState" Relationship="Self.FK_Users_UsersState" FromRole="Users" ToRole="UsersState" />
+    <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="Users" ToRole="UsersCommunity" />
   </EntityType>
   <EntityType Name="UsersState">
     <Key>
@@ -382,5 +385,48 @@
       <End Role="UsersState" EntitySet="UsersState" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="UsersCommunity" EntityType="ForumPartyModel.UsersCommunity" />
+    <AssociationSet Name="FK_UsersCommunity_Communities" Association="ForumPartyModel.FK_UsersCommunity_Communities">
+      <End Role="Communities" EntitySet="Communities" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersCommunity_Users" Association="ForumPartyModel.FK_UsersCommunity_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="UsersCommunity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommunityID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Communities" Relationship="ForumPartyModel.FK_UsersCommunity_Communities" FromRole="UsersCommunity" ToRole="Communities" />
+    <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="UsersCommunity" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_UsersCommunity_Communities">
+    <End Type="ForumPartyModel.Communities" Role="Communities" Multiplicity="1" />
+    <End Type="ForumPartyModel.UsersCommunity" Role="UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Communities">
+        <PropertyRef Name="CommunityID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="CommunityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersCommunity_Users">
+    <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="ForumPartyModel.UsersCommunity" Role="UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

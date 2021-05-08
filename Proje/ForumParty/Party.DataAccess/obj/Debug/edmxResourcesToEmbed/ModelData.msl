@@ -64,6 +64,7 @@
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="ForumPartyModel.Posts">
         <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="PostImage" ColumnName="PostImage" />
           <ScalarProperty Name="PostID" ColumnName="PostID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
@@ -145,6 +146,15 @@
         <MappingFragment StoreEntitySet="UsersState">
           <ScalarProperty Name="UserStateID" ColumnName="UserStateID" />
           <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersCommunity">
+      <EntityTypeMapping TypeName="ForumPartyModel.UsersCommunity">
+        <MappingFragment StoreEntitySet="UsersCommunity">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

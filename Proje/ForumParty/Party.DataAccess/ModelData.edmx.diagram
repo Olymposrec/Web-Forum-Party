@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="ForumPartyModel.Adress" Width="1.5" PointX="18.5" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.Categories" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.Communities" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumPartyModel.CommunityPermissions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumPartyModel.CommunityPermissions" Width="1.75" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.Images" Width="1.5" PointX="8.625" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.Posts" Width="1.5" PointX="7" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ForumPartyModel.PrivacyStatement" Width="1.5" PointX="12" PointY="7.625" IsExpanded="true" />
@@ -31,6 +31,9 @@
         <AssociationConnector Association="ForumPartyModel.FK_Questions_Surveys" ManuallyRouted="false" />
         <AssociationConnector Association="ForumPartyModel.FK_Surveys_Users" ManuallyRouted="false" />
         <AssociationConnector Association="ForumPartyModel.FK_Users_UsersState" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ForumPartyModel.UsersCommunity" Width="1.5" PointX="2.625" PointY="12.125" />
+        <AssociationConnector Association="ForumPartyModel.FK_UsersCommunity_Communities" />
+        <AssociationConnector Association="ForumPartyModel.FK_UsersCommunity_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

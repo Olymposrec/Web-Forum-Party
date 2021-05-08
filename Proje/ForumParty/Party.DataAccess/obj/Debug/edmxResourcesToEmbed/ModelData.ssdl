@@ -77,6 +77,7 @@ warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a prima
     <Property Name="Like" Type="int" />
     <Property Name="ImageID" Type="int" />
     <Property Name="CommunityID" Type="int" />
+    <Property Name="PostImage" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="PrivacyStatement">
     <Key>
@@ -150,12 +151,14 @@ warning 6013: The table/view 'ForumParty.dbo.Users_CommunityPerm' does not have 
           <Property Name="UserID" Type="int" />
           <Property Name="CommunityPermID" Type="int" />
         </EntityType>-->
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'ForumParty.dbo.UsersCommunity' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="UsersCommunity">
-          <Property Name="CommunityID" Type="int" />
-          <Property Name="UserID" Type="int" />
-        </EntityType>-->
+  <EntityType Name="UsersCommunity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommunityID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="UsersState">
     <Key>
       <PropertyRef Name="UserStateID" />
@@ -226,18 +229,6 @@ error 6004: The table 'ForumParty.dbo.PostCommnets' is referenced by a relations
       </Principal>
       <Dependent Role="Posts">
         <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Posts_Posts">
-    <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
-    <End Role="Posts1" Type="Self.Posts" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Posts">
-        <PropertyRef Name="PostID" />
-      </Principal>
-      <Dependent Role="Posts1">
-        <PropertyRef Name="PostID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -334,12 +325,30 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-error 6004: The table 'ForumParty.dbo.UsersCommunity' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_UsersCommunity_Communities" />-->
-  <!--Errors Found During Generation:
-error 6004: The table 'ForumParty.dbo.UsersCommunity' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_UsersCommunity_Users" />-->
+  <Association Name="FK_UsersCommunity_Communities">
+    <End Role="Communities" Type="Self.Communities" Multiplicity="1" />
+    <End Role="UsersCommunity" Type="Self.UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Communities">
+        <PropertyRef Name="CommunityID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="CommunityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersCommunity_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UsersCommunity" Type="Self.UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ForumPartyModelStoreContainer">
     <EntitySet Name="AboutUsers" EntityType="Self.AboutUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
@@ -353,6 +362,7 @@ error 6004: The table 'ForumParty.dbo.UsersCommunity' is referenced by a relatio
     <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersCommunity" EntityType="Self.UsersCommunity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersState" EntityType="Self.UsersState" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AboutUsers_Adress" Association="Self.FK_AboutUsers_Adress">
       <End Role="Adress" EntitySet="Adress" />
@@ -373,10 +383,6 @@ error 6004: The table 'ForumParty.dbo.UsersCommunity' is referenced by a relatio
     <AssociationSet Name="FK_Posts_Images" Association="Self.FK_Posts_Images">
       <End Role="Images" EntitySet="Images" />
       <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Posts_Posts" Association="Self.FK_Posts_Posts">
-      <End Role="Posts" EntitySet="Posts" />
-      <End Role="Posts1" EntitySet="Posts" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_PrivacyStatement" Association="Self.FK_Posts_PrivacyStatement">
       <End Role="PrivacyStatement" EntitySet="PrivacyStatement" />
@@ -405,6 +411,14 @@ error 6004: The table 'ForumParty.dbo.UsersCommunity' is referenced by a relatio
     <AssociationSet Name="FK_Users_UsersState" Association="Self.FK_Users_UsersState">
       <End Role="UsersState" EntitySet="UsersState" />
       <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersCommunity_Communities" Association="Self.FK_UsersCommunity_Communities">
+      <End Role="Communities" EntitySet="Communities" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersCommunity_Users" Association="Self.FK_UsersCommunity_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

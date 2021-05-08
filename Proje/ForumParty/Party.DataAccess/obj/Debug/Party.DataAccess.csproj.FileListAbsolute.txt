@@ -13,3 +13,17 @@ D:\VisualStudio2019\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.cspro
 D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\FakeData.dll
 D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\FakeData.pdb
 D:\VisualStudio2019\ForumParty\Party.DataAccess\bin\Debug\UrlRewritingNet.UrlRewriter.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.dll.config
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Party.DataAccess.pdb
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\FakeData.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\UrlRewritingNet.UrlRewriter.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\FakeData.pdb
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CoreCompileInputs.cache
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CopyComplete
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.pdb

@@ -18,6 +18,7 @@ namespace Party.DataAccess
         public Communities()
         {
             this.Posts = new HashSet<Posts>();
+            this.UsersCommunity = new HashSet<UsersCommunity>();
         }
     
         public int CommunityID { get; set; }
@@ -26,5 +27,7 @@ namespace Party.DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Posts> Posts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersCommunity> UsersCommunity { get; set; }
     }
 }

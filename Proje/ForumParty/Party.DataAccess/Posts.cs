@@ -24,6 +24,7 @@ namespace Party.DataAccess
         public Nullable<int> Like { get; set; }
         public Nullable<int> ImageID { get; set; }
         public Nullable<int> CommunityID { get; set; }
+        public byte[] PostImage { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual Communities Communities { get; set; }

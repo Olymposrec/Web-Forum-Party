@@ -20,6 +20,7 @@ namespace Party.DataAccess
             this.AboutUsers = new HashSet<AboutUsers>();
             this.Posts = new HashSet<Posts>();
             this.Surveys = new HashSet<Surveys>();
+            this.UsersCommunity = new HashSet<UsersCommunity>();
         }
     
         public int UserID { get; set; }
@@ -35,5 +36,7 @@ namespace Party.DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Surveys> Surveys { get; set; }
         public virtual UsersState UsersState { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersCommunity> UsersCommunity { get; set; }
     }
 }

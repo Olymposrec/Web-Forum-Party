@@ -111,6 +111,9 @@
     <Compile Include="Users.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersCommunity.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="UsersState.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>

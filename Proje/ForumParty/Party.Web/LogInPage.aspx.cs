@@ -61,6 +61,8 @@ namespace Party.Web
                 {
                     Repository<Party.DataAccess.Users> repo = new Repository<Party.DataAccess.Users>();
                     Repository<Party.DataAccess.Communities> repo2 = new Repository<DataAccess.Communities>();
+                    Repository<Party.DataAccess.UsersCommunity> repo3 = new Repository<DataAccess.UsersCommunity>();
+                    
 
                     DataAccess.Users newUser = new DataAccess.Users
                     {
@@ -74,6 +76,9 @@ namespace Party.Web
                     {
                         CommunityName = txt_usernameRegister.Text
                     };
+
+                   
+
                     var checkUser = repo.Find(p => p.UserName == txt_usernameRegister.Text || p.UserMail == txt_usermailRegister.Text);
                     if (checkUser != null)
                     {
@@ -83,8 +88,15 @@ namespace Party.Web
                     {
                         repo.Insert(newUser);
                         repo2.Insert(newCommunity);
-
+                       
                         lbl_registerResultSuccess.Text = "Registration is successful.";
+
+                        DataAccess.UsersCommunity newUserComm = new DataAccess.UsersCommunity
+                        {
+                            CommunityID = newCommunity.CommunityID,
+                            UserID = newUser.UserID
+                        };
+                        repo3.Insert(newUserComm);
 
                     }
 

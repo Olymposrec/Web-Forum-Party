@@ -16,7 +16,7 @@
   </div>
       <div class="form-control-file">
         <label class="form-label" for="customFile">File Input.</label>
-          <asp:FileUpload runat="server"  type="file" class="form-control"></asp:FileUpload>
+          <asp:FileUpload  ID="imageUpload" runat="server"  type="file" class="form-control"></asp:FileUpload>
       </div> 
 
 
@@ -27,9 +27,10 @@
   <div class="form-group">
     <label for="drp_category">Category</label> 
     <div>
-        <asp:DropDownList ID="drp_category" runat="server" required="required" class="custom-select">
+        <asp:DropDownList ID="drp_category" runat="server" required="required" class="custom-select" DataSourceID="SqlDataSource1" DataTextField="CategoryName" DataValueField="CategoryID">
             <asp:ListItem Selected="True" Value="-1">Select One</asp:ListItem>
         </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ForumPartyConnectionString %>" SelectCommand="SELECT [CategoryID], [CategoryName] FROM [Categories]"></asp:SqlDataSource>
     </div>
   </div>
   <div class="form-group">
@@ -52,8 +53,9 @@
       </div>
     </div>
   </div> 
+            <asp:Label ID="lbl_result" runat="server" Text=""></asp:Label>
   <div class="form-group">
-      <asp:Button runat="server" Text="Submit"  type="submit" class="btn btn-primary"/>
+      <asp:Button runat="server" Text="Submit"  type="submit" class="btn btn-primary" OnClick="Unnamed2_Click"/>
   </div>
 </form>
 
