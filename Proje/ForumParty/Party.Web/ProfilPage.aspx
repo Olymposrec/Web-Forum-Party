@@ -8,7 +8,7 @@
     <ItemTemplate>
                  <div class="card mb-4">
                      
-                           <img max-width="%100" height="auto" class="card-img-top" src="Resource/images/test.jpg"  alt="Card image cap"/>
+                           <img max-width="%100" height="auto" class="card-img-top" src="<%#"data:image/jpeg;base64,"+ Convert.ToBase64String((byte[])Eval("PostImage")) %>"  alt="Card image cap"/>
                            <div class="card-body">
                               <h2 class="card-title">
                                   <asp:Label ID="lbl_title" runat="server" ><%#Eval("Title") %></asp:Label>
@@ -26,7 +26,7 @@
                                     <hr />
                                 </div>
                                <div style="height:40px;width:fit-content()">
-                                   <asp:LinkButton ID="lbl_upvote" runat="server"  type="button" class="btn btn-success"> <i class="bi bi-chevron-up"></i></asp:LinkButton>
+                                   <asp:LinkButton ID="lbl_upvote" runat="server" OnClick="lbl_upvote_Click" type="button" class="btn btn-success"> <i class="bi bi-chevron-up"></i></asp:LinkButton>
                                 <asp:Label ID="lbl_likecount" runat="server" class="h5" ><b><%#Eval("Like") %></b></asp:Label>
                                 <asp:LinkButton ID="lbl_downvote" runat="server"  type="button" class="btn btn-danger"><i class="bi bi-chevron-down"></i></asp:LinkButton>
                                <asp:LinkButton ID="LinkButton3" runat="server"  type="button" class="btn btn-info">Detail <i class="bi bi-info-circle-fill"></i></asp:LinkButton>

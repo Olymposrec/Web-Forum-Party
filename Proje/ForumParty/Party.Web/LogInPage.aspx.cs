@@ -38,6 +38,9 @@ namespace Party.Web
                 if (returnVal != null)
                 {
                     Session["UserName"] = txt_userName.Text;
+
+                    var returnID = repo.Find(p => p.UserName == usersInput.UserName);
+                    Session["UserID"]=returnID.UserID;
                     Response.Redirect("/HomePage.aspx");
                 }
                 else

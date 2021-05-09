@@ -10,11 +10,11 @@ namespace Party.Business
 {
     public class Users
     {
-        public List<string> GetService()
-        {
-            var service = new Party.Web.WebService.ASMXTest().AdlariListele(15);
-            return service;
-        }
+        //public List<string> GetService()
+        //{
+        //    var service = new Party.Web.WebService.ASMXTest().AdlariListele(15);
+        //    return service;
+        //}
         //public List<Party.DataAccess.Users> Listele()
         //{
         //    Party.DataAccess.ForumPartyEntities1 ent = new DataAccess.ForumPartyEntities1();

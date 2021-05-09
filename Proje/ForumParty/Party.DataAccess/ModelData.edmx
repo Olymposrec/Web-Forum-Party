@@ -82,7 +82,7 @@ warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a prima
           <Property Name="Like" Type="int" />
           <Property Name="ImageID" Type="int" />
           <Property Name="CommunityID" Type="int" />
-          <Property Name="PostImage" Type="varchar(max)" />
+          <Property Name="PostImage" Type="image" />
         </EntityType>
         <EntityType Name="PrivacyStatement">
           <Key>
@@ -513,7 +513,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
           <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
-          <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PostImage" Type="Binary" />
         </EntityType>
         <EntityType Name="PrivacyStatement">
           <Key>

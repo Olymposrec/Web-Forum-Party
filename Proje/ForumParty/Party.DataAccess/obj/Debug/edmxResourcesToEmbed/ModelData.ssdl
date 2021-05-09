@@ -77,7 +77,7 @@ warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a prima
     <Property Name="Like" Type="int" />
     <Property Name="ImageID" Type="int" />
     <Property Name="CommunityID" Type="int" />
-    <Property Name="PostImage" Type="varbinary(max)" />
+    <Property Name="PostImage" Type="image" />
   </EntityType>
   <EntityType Name="PrivacyStatement">
     <Key>

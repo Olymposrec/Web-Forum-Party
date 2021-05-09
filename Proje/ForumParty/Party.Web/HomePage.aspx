@@ -8,7 +8,7 @@
     <ItemTemplate>
                  <div class="card mb-4">
                      
-                           <img max-width="%100" height="auto" class="card-img-top" src="Resource/images/test.jpg"  alt="Card image cap"/>
+                           <img max-width="%100" height="auto" class="card-img-top" src="<%#"data:image/jpeg;base64,"+ Convert.ToBase64String((byte[])Eval("PostImage")) %>""  alt="Card image cap"/>
                            <div class="card-body">
                               <h2 class="card-title">
                                   <asp:Label ID="lbl_title" runat="server" ><%#Eval("Title") %></asp:Label>

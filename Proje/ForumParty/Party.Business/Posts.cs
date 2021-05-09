@@ -23,6 +23,7 @@ namespace Party.Business
                               UploadData = p.UploadDate,
                               CategoryID = c.CategoryName,
                               UserID = u.UserName,
+                              PostImage=p.PostImage,
                               Like = p.Like
                           }).ToList();
             return result;

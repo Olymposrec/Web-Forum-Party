@@ -45,5 +45,10 @@ namespace Party.Web
         {
 
         }
+
+        protected void lbl_upvote_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

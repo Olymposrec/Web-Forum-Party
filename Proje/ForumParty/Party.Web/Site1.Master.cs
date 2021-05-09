@@ -53,15 +53,32 @@ namespace Party.Web
         }
         protected void AddPost_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AddPostPage.aspx");
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("LogInPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("AddPostPage.aspx");
+            }
+           
         }
         protected void AddPoll_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AddPollPage.aspx");
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("LogInPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("AddPollPage.aspx");
+            }
+           
         }
         
         protected void ForumPage_Click(object sender, EventArgs e)
         {
+            
             Response.Redirect("HomePage.aspx");
 
         }
@@ -73,7 +90,15 @@ namespace Party.Web
         
         protected void MessagesPage_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MessagesPage.aspx");
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("LogInPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("MessagesPage.aspx");
+            }
+           
 
         }
         protected void HomePage_Click(object sender, EventArgs e)
@@ -84,8 +109,14 @@ namespace Party.Web
         
         protected void MainPage_Click(object sender, EventArgs e)
         {
-            
-            Response.Redirect("ProfilPage.aspx");
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("LogInPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("ProfilPage.aspx");
+            }
 
         }
     }

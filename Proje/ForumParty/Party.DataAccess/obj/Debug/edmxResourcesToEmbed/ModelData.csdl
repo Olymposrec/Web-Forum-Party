@@ -83,7 +83,7 @@
     <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
     <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
-    <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PostImage" Type="Binary" />
   </EntityType>
   <EntityType Name="PrivacyStatement">
     <Key>

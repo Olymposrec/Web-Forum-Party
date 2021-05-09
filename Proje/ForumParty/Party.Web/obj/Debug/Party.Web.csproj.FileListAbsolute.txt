@@ -94,6 +94,8 @@ D:\VisualStudio2019\ForumParty\Party.Web\bin\FakeData.pdb
 D:\VisualStudio2019\ForumParty\Party.Web\bin\Party.DataAccess.dll
 D:\VisualStudio2019\ForumParty\Party.Web\bin\Party.DataAccess.pdb
 D:\VisualStudio2019\ForumParty\Party.Web\bin\Party.DataAccess.dll.config
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.csprojAssemblyReference.cache
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.csproj.CoreCompileInputs.cache
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\Party.Web.dll.config
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\Party.Web.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\Party.Web.pdb
@@ -185,8 +187,6 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Num
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Text.Encodings.Web.xml
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Threading.Tasks.Extensions.xml
-D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.csprojAssemblyReference.cache
-D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.csproj.CoreCompileInputs.cache
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.csproj.CopyComplete
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.pdb
