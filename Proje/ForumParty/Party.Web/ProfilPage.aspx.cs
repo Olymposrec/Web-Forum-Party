@@ -30,6 +30,7 @@ namespace Party.Web
                                   Description = p.Description,
                                   UploadDate = p.UploadDate,
                                   UserID = u.UserName,
+                                  PostImage=p.PostImage,
                                   Like = p.Like
                               }).ToList();
                 if (result!=null)

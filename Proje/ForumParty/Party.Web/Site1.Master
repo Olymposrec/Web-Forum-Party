@@ -116,13 +116,11 @@
                  Categories
             </div>
                 <ul class="list-group list-group-flush">
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/business.png" /> Business</a>
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/technology.png" /> Technology</a>
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/science.png" /> Science</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/sports.png" /> Sports</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/gaming.png" /> Gaming</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/entertainment.png" /> Entertainment</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/politics.png" /> Politics</a>
+                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                        <ItemTemplate>
+                            <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="<%#"data:image/jpeg;base64,"+ Convert.ToBase64String((byte[])Eval("CategoryImage")) %>""  /> <%#Eval("CategoryName") %></a>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
          </div>
       

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Party.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,14 @@ namespace Party.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
+            Repository<DataAccess.Categories> repoList = new Repository<DataAccess.Categories>();
+            Repeater1.DataSource = repoList.List();
+            Repeater1.DataBind();
+
+
             if (Session["UserName"] != null)
             {
                 lbl_session.Text = Session["UserName"].ToString();
@@ -117,6 +126,10 @@ namespace Party.Web
             {
                 Response.Redirect("ProfilPage.aspx");
             }
+
+        }
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
 
         }
     }

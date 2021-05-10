@@ -106,5 +106,10 @@ namespace Party.Web
         {
             TextBox1.Text = DateTime.Now.ToString();
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

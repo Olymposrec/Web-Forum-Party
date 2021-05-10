@@ -26,6 +26,10 @@ namespace Party.Business
         {
             return _objectSet.Where(where).ToList();
         }
+        public IQueryable<T> ListQueyable()
+        {
+            return _objectSet.AsQueryable<T>();
+        }
         public int Insert(T obj)
         {
             _objectSet.Add(obj);

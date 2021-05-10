@@ -35,6 +35,7 @@
           </Key>
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Communities">
           <Key>
@@ -82,7 +83,7 @@ warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a prima
           <Property Name="Like" Type="int" />
           <Property Name="ImageID" Type="int" />
           <Property Name="CommunityID" Type="int" />
-          <Property Name="PostImage" Type="image" />
+          <Property Name="PostImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="PrivacyStatement">
           <Key>
@@ -465,6 +466,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categories" FromRole="Categories" ToRole="Posts" />
           <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Categories" FromRole="Categories" ToRole="Surveys" />
+          <Property Name="CategoryImage" Type="Binary" />
         </EntityType>
         <EntityType Name="Communities">
           <Key>
@@ -513,7 +515,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
           <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
-          <Property Name="PostImage" Type="Binary" />
+          <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="PrivacyStatement">
           <Key>
@@ -894,6 +896,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ForumPartyModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
               </MappingFragment>

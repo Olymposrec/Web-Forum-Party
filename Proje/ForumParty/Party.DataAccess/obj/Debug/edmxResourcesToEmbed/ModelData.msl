@@ -30,6 +30,7 @@
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="ForumPartyModel.Categories">
         <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
         </MappingFragment>

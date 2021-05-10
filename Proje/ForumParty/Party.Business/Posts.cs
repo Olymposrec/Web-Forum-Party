@@ -8,6 +8,7 @@ namespace Party.Business
 {
     public class Posts
     {
+        public  Repository<DataAccess.Posts> repo_post = new Repository<DataAccess.Posts>();
         public IEnumerable<dynamic> SpecificGetPosts()
         {
             DataAccess.Posts ent2 = new DataAccess.Posts();
@@ -18,6 +19,7 @@ namespace Party.Business
                           where c.CategoryID == p.CategoryID && p.UserID == u.UserID
                           select new
                           {
+                              PostID=p.PostID,
                               Title = p.Title,
                               Description = p.Description,
                               UploadData = p.UploadDate,
@@ -25,8 +27,13 @@ namespace Party.Business
                               UserID = u.UserName,
                               PostImage=p.PostImage,
                               Like = p.Like
-                          }).ToList();
+                          }).OrderByDescending(x=> x.PostID).ToList();
             return result;
+        }
+
+        public IQueryable<DataAccess.Posts> GetAllPostsQueryable()
+        {
+            return repo_post.ListQueyable();
         }
     }
 }
