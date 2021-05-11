@@ -12,12 +12,12 @@ namespace Party.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
+
+
 
             if (Session["UserName"] != null)
             {
-                
+
                 Business.Posts test = new Business.Posts();
                 Repeater1.DataSource = test.SpecificGetPosts();
                 Repeater1.DataBind();
@@ -31,27 +31,105 @@ namespace Party.Web
             }
         }
 
-        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        protected void lbl_upvote_Click(object sender, EventArgs e)
         {
-            
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+            Label post = (Label)item.FindControl("Label1") as Label;
+            Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+            int postID = int.Parse(post.Text);
+            var result = data.Find(x => x.PostID ==postID );
+            result.Like++;
+            data.Update(result);
+            Response.Redirect("HomePage.aspx");
+
         }
 
-        protected void Btn_UpVote_Click(object sender, EventArgs e)
+        protected void lbl_downvote_Click(object sender, EventArgs e)
         {
-
-            int getID=Convert.ToInt32(Repeater1.Items.Equals("PostID"));
-            int userID = Convert.ToInt32(Repeater1.Items.Equals("UserID"));
-            int getCurrentlike = Convert.ToInt32(Repeater1.Items.Equals("Like"));
-            getCurrentlike++;
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+            Label post = (Label)item.FindControl("Label1") as Label;
             Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            DataAccess.Posts like = new DataAccess.Posts();
-            like.Like=getCurrentlike;
-            var result =data.Find(y => y.PostID == getID);
+            int postID = int.Parse(post.Text);
+            var result = data.Find(x => x.PostID == postID);
+            result.Like--;
             data.Update(result);
         }
-        protected void Btn_UpDown_Click(object sender, EventArgs e)
-        {
 
-        }
+        //protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "UpVote")
+        //    {
+        //        int getPostID = Convert.ToInt32(e.CommandArgument.ToString());
+        //        Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+        //        var result = data.Find(x => x.PostID == getPostID);
+        //        result.Like++;
+        //        data.Update(result);
+        //    }else if (e.CommandName=="DownVote")
+        //    {
+        //        int getPostID = Convert.ToInt32(e.CommandArgument.ToString());
+        //        Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+        //        var result = data.Find(x => x.PostID == getPostID);
+        //        result.Like--;
+        //        data.Update(result);
+        //    }
+        //}
+
+        //protected void lbl_downvote_Click(object sender, EventArgs e)
+        //{
+        //    RepeaterItem item = (sender as Label).NamingContainer as RepeaterItem;
+        //    int getPostID = Convert.ToInt32((item.FindControl("Label1") as Label).Text);
+        //    int getCurrentlike = Convert.ToInt32((item.FindControl("lbl_likecount") as Label).Text);
+        //    getCurrentlike -= 1;
+
+        //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+
+        //    var result = data.Find(x =>  x.PostID == getPostID);
+
+
+        //    result.Like -= getCurrentlike;
+
+        //    data.Update(result);
+        //}
+
+        //protected void lbl_upvote_Click(object sender, EventArgs e)
+        //{
+
+        //    int getID = 17;
+        //    int userID = 1;
+        //    int getCurrentlike = Convert.ToInt32(Repeater1.Items.Equals("Like"));
+        //    getCurrentlike += 1;
+
+        //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+
+        //    var result = data.Find(x => x.UserID == 1 && x.PostID == 17);
+
+
+        //    result.Like += getCurrentlike;
+
+        //    data.Update(result);
+        //}
+
+        //protected void Repeater1_ItemCreated(object sender, RepeaterItemEventArgs e)
+        //{
+
+        //    //e.Item.ItemType==e.Item.FindControl()
+        //}
+
+
+
+        //protected void Btn_UpVote_Click(object sender, CommandEventArgs e)
+        //{
+
+        //}
+
+        //protected void Btn_UpVote_Click(object sender, CommandEventArgs d)
+        //{
+
+
+        //}
+        //protected void Btn_UpDown_Click(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
