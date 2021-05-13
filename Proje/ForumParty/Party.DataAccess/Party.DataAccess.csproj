@@ -74,9 +74,6 @@
     <Compile Include="CommunityPermissions.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Images.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
-    </Compile>
     <Compile Include="ModelData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

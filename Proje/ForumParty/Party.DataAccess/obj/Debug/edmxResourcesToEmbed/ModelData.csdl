@@ -35,7 +35,7 @@
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categories" FromRole="Categories" ToRole="Posts" />
     <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Categories" FromRole="Categories" ToRole="Surveys" />
-    <Property Name="CategoryImage" Type="Binary" />
+    <Property Name="CategoryImage" Type="String" />
   </EntityType>
   <EntityType Name="Communities">
     <Key>
@@ -54,15 +54,6 @@
     <Property Name="CommunityPermID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PermDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Images">
-    <Key>
-      <PropertyRef Name="ImageID" />
-    </Key>
-    <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Images" FromRole="Images" ToRole="Posts" />
-  </EntityType>
   <EntityType Name="Posts">
     <Key>
       <PropertyRef Name="PostID" />
@@ -75,11 +66,9 @@
     <Property Name="PrivacyID" Type="Int32" />
     <Property Name="UploadDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Like" Type="Int32" />
-    <Property Name="ImageID" Type="Int32" />
     <Property Name="CommunityID" Type="Int32" />
     <NavigationProperty Name="Categories" Relationship="Self.FK_Posts_Categories" FromRole="Posts" ToRole="Categories" />
     <NavigationProperty Name="Communities" Relationship="Self.FK_Posts_Communities" FromRole="Posts" ToRole="Communities" />
-    <NavigationProperty Name="Images" Relationship="Self.FK_Posts_Images" FromRole="Posts" ToRole="Images" />
     <NavigationProperty Name="Posts1" Relationship="Self.FK_Posts_Posts" FromRole="Posts" ToRole="Posts1" />
     <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
     <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
@@ -224,18 +213,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Posts_Images">
-    <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
-    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Images">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="Posts">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Posts_Posts">
     <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
     <End Role="Posts1" Type="Self.Posts" Multiplicity="0..1" />
@@ -326,7 +303,6 @@
     <EntitySet Name="Categories" EntityType="Self.Categories" />
     <EntitySet Name="Communities" EntityType="Self.Communities" />
     <EntitySet Name="CommunityPermissions" EntityType="Self.CommunityPermissions" />
-    <EntitySet Name="Images" EntityType="Self.Images" />
     <EntitySet Name="Posts" EntityType="Self.Posts" />
     <EntitySet Name="PrivacyStatement" EntityType="Self.PrivacyStatement" />
     <EntitySet Name="Questions" EntityType="Self.Questions" />
@@ -352,10 +328,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Communities" Association="Self.FK_Posts_Communities">
       <End Role="Communities" EntitySet="Communities" />
-      <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Posts_Images" Association="Self.FK_Posts_Images">
-      <End Role="Images" EntitySet="Images" />
       <End Role="Posts" EntitySet="Posts" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Posts" Association="Self.FK_Posts_Posts">

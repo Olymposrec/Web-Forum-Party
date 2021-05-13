@@ -41,7 +41,8 @@ namespace Party.Web
 
                     var returnID = repo.Find(p => p.UserName == usersInput.UserName);
                     Session["UserID"]=returnID.UserID;
-                    Response.Redirect("/HomePage.aspx");
+
+                    Response.Redirect("/Profile/"  + usersInput.UserName + "");
                 }
                 else
                 {

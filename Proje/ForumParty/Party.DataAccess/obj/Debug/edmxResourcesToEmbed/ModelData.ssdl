@@ -30,7 +30,7 @@
     </Key>
     <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryName" Type="varchar" MaxLength="50" />
-    <Property Name="CategoryImage" Type="varbinary(max)" />
+    <Property Name="CategoryImage" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Communities">
     <Key>
@@ -46,14 +46,6 @@
     </Key>
     <Property Name="CommunityPermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PermDescription" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Images">
-    <Key>
-      <PropertyRef Name="ImageID" />
-    </Key>
-    <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FileName" Type="varchar(max)" />
-    <Property Name="Data" Type="image" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -76,7 +68,6 @@ warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a prima
     <Property Name="PrivacyID" Type="int" />
     <Property Name="UploadDate" Type="varchar" MaxLength="50" />
     <Property Name="Like" Type="int" />
-    <Property Name="ImageID" Type="int" />
     <Property Name="CommunityID" Type="int" />
     <Property Name="PostImage" Type="varbinary(max)" />
   </EntityType>
@@ -221,18 +212,6 @@ error 6004: The table 'ForumParty.dbo.PostCommnets' is referenced by a relations
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Posts_Images">
-    <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
-    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Images">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="Posts">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Posts_PrivacyStatement">
     <End Role="PrivacyStatement" Type="Self.PrivacyStatement" Multiplicity="0..1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
@@ -356,7 +335,6 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Communities" EntityType="Self.Communities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CommunityPermissions" EntityType="Self.CommunityPermissions" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrivacyStatement" EntityType="Self.PrivacyStatement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
@@ -379,10 +357,6 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Communities" Association="Self.FK_Posts_Communities">
       <End Role="Communities" EntitySet="Communities" />
-      <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Posts_Images" Association="Self.FK_Posts_Images">
-      <End Role="Images" EntitySet="Images" />
       <End Role="Posts" EntitySet="Posts" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_PrivacyStatement" Association="Self.FK_Posts_PrivacyStatement">

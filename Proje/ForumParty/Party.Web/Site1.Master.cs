@@ -13,11 +13,14 @@ namespace Party.Web
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+                Repository<DataAccess.Categories> repoList = new Repository<DataAccess.Categories>();
+                Repeater1.DataSource = repoList.List();
+                Repeater1.DataBind();
+            }
 
-
-            Repository<DataAccess.Categories> repoList = new Repository<DataAccess.Categories>();
-            Repeater1.DataSource = repoList.List();
-            Repeater1.DataBind();
+            
 
 
             if (Session["UserName"] != null)
@@ -40,7 +43,7 @@ namespace Party.Web
         }
         protected void Login_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LogInPage.aspx");
+            Response.Redirect("/LogInPage");
         }
 
         protected void LogOut_Click(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace Party.Web
            
             Session.RemoveAll();
             lbl_session.Text = "";
-            Response.Redirect("LogInPage.aspx");
+            Response.Redirect("/LogInPage");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -64,11 +67,11 @@ namespace Party.Web
         {
             if (Session["UserName"] == null)
             {
-                Response.Redirect("LogInPage.aspx");
+                Response.Redirect("/LogInPage");
             }
             else
             {
-                Response.Redirect("AddPostPage.aspx");
+                Response.Redirect("/AddPost");
             }
            
         }
@@ -76,7 +79,7 @@ namespace Party.Web
         {
             if (Session["UserName"] == null)
             {
-                Response.Redirect("LogInPage.aspx");
+                Response.Redirect("/LogInPage");
             }
             else
             {
@@ -87,8 +90,8 @@ namespace Party.Web
         
         protected void ForumPage_Click(object sender, EventArgs e)
         {
-            
-            Response.Redirect("HomePage.aspx");
+
+            Response.Redirect("/HomePage");
 
         }
         protected void PollsPage_Click(object sender, EventArgs e)
@@ -101,7 +104,7 @@ namespace Party.Web
         {
             if (Session["UserName"] == null)
             {
-                Response.Redirect("LogInPage.aspx");
+                Response.Redirect("/LogInPage");
             }
             else
             {
@@ -112,24 +115,33 @@ namespace Party.Web
         }
         protected void HomePage_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("/HomePage");
 
         }
         
-        protected void MainPage_Click(object sender, EventArgs e)
+        protected void ProfilePage_Click(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
             {
-                Response.Redirect("LogInPage.aspx");
+                Response.Redirect("/LogInPage");
             }
             else
             {
-                Response.Redirect("ProfilPage.aspx");
+                Response.Redirect("/Profile/"+ Session["UserName"].ToString());
             }
 
         }
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+           
+        }
+
+        protected void lb_category_Click(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+            LinkButton categoryName = (LinkButton)item.FindControl("lb_category") as LinkButton;
+            string category = categoryName.Text;
+            Response.Redirect("/HomePage/" + category);
 
         }
     }

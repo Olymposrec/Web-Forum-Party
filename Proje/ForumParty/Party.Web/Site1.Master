@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container mr-auto">
         <asp:LinkButton ID="LinkButton7" runat="server"  OnClick="HomePage_Click" class="navbar-brand" type="button">
-           <img width="25" height="25" class="rounded-circle" src="Resource/images/homepageLogo2.jpg" /> <span class="navbar-brand mb-0 h1"> Party Forum</span>
+           <img width="25" height="25" class="rounded-circle" src="Resource/images/homepageLogo2.jpg" runat="server"/> <span class="navbar-brand mb-0 h1"> Party Forum</span>
         </asp:LinkButton>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -52,7 +52,7 @@
                     
                 </li>
                  <li class="nav-item">
-                    <asp:LinkButton ID="lnkbtn_MainPage" runat="server"  OnClick="MainPage_Click" class="navbar-brand" type="button"><i class="bi bi-person-circle"></i> Profil</asp:LinkButton>
+                    <asp:LinkButton ID="lnkbtn_MainPage" runat="server"  OnClick="ProfilePage_Click" class="navbar-brand" type="button"><i class="bi bi-person-circle"></i> Profil</asp:LinkButton>
                     
                 </li>
             </ul>
@@ -118,7 +118,12 @@
                 <ul class="list-group list-group-flush">
                     <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                         <ItemTemplate>
-                            <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="<%#"data:image/jpeg;base64,"+ Convert.ToBase64String((byte[])Eval("CategoryImage")) %>""  /> <%#Eval("CategoryName") %></a>
+                            <asp:LinkButton ID="lb_category" OnClick="lb_category_Click" runat="server" class="list-group-item list-group-item-action"  >
+                                <img width="25" height="25" src='<%#Eval("CategoryImage") %>'></img>
+                                <%#Eval("CategoryName")%>
+                                
+                            </asp:LinkButton>
+                            
                         </ItemTemplate>
                     </asp:Repeater>
                 </ul>

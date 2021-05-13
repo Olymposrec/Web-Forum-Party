@@ -33,27 +33,87 @@ namespace Party.Web
 
         protected void lbl_upvote_Click(object sender, EventArgs e)
         {
-            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            Label post = (Label)item.FindControl("Label1") as Label;
-            Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            int postID = int.Parse(post.Text);
-            var result = data.Find(x => x.PostID ==postID );
-            result.Like++;
-            data.Update(result);
-            Response.Redirect("HomePage.aspx");
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label1") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                var result = data.Find(x => x.PostID == postID);
+                result.Like++;
+                data.Update(result);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
+            
 
         }
 
         protected void lbl_downvote_Click(object sender, EventArgs e)
         {
-            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            Label post = (Label)item.FindControl("Label1") as Label;
-            Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            int postID = int.Parse(post.Text);
-            var result = data.Find(x => x.PostID == postID);
-            result.Like--;
-            data.Update(result);
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label1") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                var result = data.Find(x => x.PostID == postID);
+                result.Like--;
+                data.Update(result);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
+            
         }
+
+
+
+        protected void lb_Detail_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("/LogInPage");
+            }
+            else
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label1") as Label;
+                Label user = (Label)item.FindControl("Label2") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                string userName = user.Text;
+                Session["ClickedPostID"] = postID;
+                Response.Redirect("/PostDetail/" + postID + "/" + userName + "");
+            }
+            
+        }
+
+
+        protected void lb_UserProfile_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label1") as Label;
+                Label user = (Label)item.FindControl("Label2") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                string userName = user.Text;
+                Response.Redirect("/Profile/" + postID + "/" + userName + "");
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
+
+           
+        }
+
+
 
         //protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         //{

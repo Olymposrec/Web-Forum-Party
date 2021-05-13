@@ -37,5 +37,5 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\obj\Debug\Party.Business.csproj.CopyComplete
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\obj\Debug\Party.Business.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\obj\Debug\Party.Business.pdb
-D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Party.Web.pdb
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Party.Web.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Party.Web.pdb

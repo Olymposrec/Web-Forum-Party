@@ -76,10 +76,13 @@ namespace Party.Web
                             PrivacyID = privacyID,
                             UploadDate = DateTime.Today.ToShortDateString(),
                             PostImage= bytes,
+                            Like=0,
                             CommunityID = Convert.ToInt32(drp_community.SelectedValue.ToString())
                         };
 
                         repo.Insert(post);
+
+                        Response.Redirect("/Profile/"+Session["UserName"].ToString());
 
                     }
                     else

@@ -11,26 +11,17 @@ namespace Party.Web
 {
 
 
-    public partial class ProfilPage
+    public partial class PostDetail
     {
 
         /// <summary>
-        /// btn_follow control.
+        /// Repeater2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_follow;
-
-        /// <summary>
-        /// btn_chat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_chat;
+        protected global::System.Web.UI.WebControls.Repeater Repeater2;
 
         /// <summary>
         /// Repeater1 control.
@@ -40,5 +31,23 @@ namespace Party.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeater1;
+
+        /// <summary>
+        /// txt_Comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Comment;
+
+        /// <summary>
+        /// btn_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_comment;
     }
 }

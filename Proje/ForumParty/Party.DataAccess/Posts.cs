@@ -22,13 +22,11 @@ namespace Party.DataAccess
         public Nullable<int> PrivacyID { get; set; }
         public string UploadDate { get; set; }
         public Nullable<int> Like { get; set; }
-        public Nullable<int> ImageID { get; set; }
         public Nullable<int> CommunityID { get; set; }
         public byte[] PostImage { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual Communities Communities { get; set; }
-        public virtual Images Images { get; set; }
         public virtual Posts Posts1 { get; set; }
         public virtual Posts Posts2 { get; set; }
         public virtual PrivacyStatement PrivacyStatement { get; set; }

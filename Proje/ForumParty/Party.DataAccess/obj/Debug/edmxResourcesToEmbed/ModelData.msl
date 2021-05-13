@@ -53,15 +53,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Images">
-      <EntityTypeMapping TypeName="ForumPartyModel.Images">
-        <MappingFragment StoreEntitySet="Images">
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="Data" ColumnName="Data" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="ForumPartyModel.Posts">
         <MappingFragment StoreEntitySet="Posts">
@@ -74,7 +65,6 @@
           <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
           <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
           <ScalarProperty Name="Like" ColumnName="Like" />
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
           <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
         </MappingFragment>
       </EntityTypeMapping>

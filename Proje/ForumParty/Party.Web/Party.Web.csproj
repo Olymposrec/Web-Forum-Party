@@ -161,6 +161,7 @@
     <Content Include="Default.aspx" />
     <Content Include="font\bootstrap-icons.css" />
     <Content Include="font\index.html" />
+    <Content Include="Global.asax" />
     <Content Include="icons\alarm-fill.svg" />
     <Content Include="icons\alarm.svg" />
     <Content Include="icons\align-bottom.svg" />
@@ -1489,6 +1490,7 @@
     <Content Include="LogInPage.aspx" />
     <Content Include="MessagesPage.aspx" />
     <Content Include="PollsPage.aspx" />
+    <Content Include="PostDetail.aspx" />
     <Content Include="ProfilPage.aspx" />
     <Content Include="Resource\css\blog-home.css" />
     <Content Include="Resource\css\LogIn.css" />
@@ -1498,6 +1500,7 @@
     <Content Include="Resource\images\homepageLogo1.jpg" />
     <Content Include="Resource\images\homepageLogo2.jpg" />
     <Content Include="Resource\images\politics.png" />
+    <Content Include="Resource\images\profilDefaultImage.png" />
     <Content Include="Resource\images\science.png" />
     <Content Include="Resource\images\sports.png" />
     <Content Include="Resource\images\technology.png" />
@@ -1653,6 +1656,9 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="LogInPage.aspx.cs">
       <DependentUpon>LogInPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1673,6 +1679,13 @@
     </Compile>
     <Compile Include="PollsPage.aspx.designer.cs">
       <DependentUpon>PollsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostDetail.aspx.cs">
+      <DependentUpon>PostDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostDetail.aspx.designer.cs">
+      <DependentUpon>PostDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfilPage.aspx.cs">
       <DependentUpon>ProfilPage.aspx</DependentUpon>
