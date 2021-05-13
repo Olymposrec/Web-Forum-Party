@@ -10,6 +10,8 @@
     <Property Name="SurName" Type="varchar" MaxLength="50" />
     <Property Name="Phone" Type="varchar" MaxLength="30" />
     <Property Name="AddressID" Type="int" />
+    <Property Name="ProfilImage" Type="varbinary(max)" />
+    <Property Name="AboutMe" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Adress">
     <Key>
@@ -126,6 +128,14 @@ warning 6013: The table/view 'ForumParty.dbo.SurveyComments' does not have a pri
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserFollowers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FollowerID" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -287,6 +297,30 @@ error 6004: The table 'ForumParty.dbo.SurveyComments' is referenced by a relatio
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UserFollowers_UserFollowers">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserFollowers" Type="Self.UserFollowers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFollowers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserFollowers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserFollowers" Type="Self.UserFollowers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFollowers">
+        <PropertyRef Name="FollowerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <!--Errors Found During Generation:
 error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a relationship, but cannot be found.
         <Association Name="FK_Users_CommunityPerm_CommunityPermissions" />-->
@@ -340,6 +374,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserFollowers" EntityType="Self.UserFollowers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersCommunity" EntityType="Self.UsersCommunity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersState" EntityType="Self.UsersState" Schema="dbo" store:Type="Tables" />
@@ -382,6 +417,14 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     <AssociationSet Name="FK_Surveys_Users" Association="Self.FK_Surveys_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Surveys" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserFollowers_UserFollowers" Association="Self.FK_UserFollowers_UserFollowers">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserFollowers" EntitySet="UserFollowers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserFollowers_Users" Association="Self.FK_UserFollowers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserFollowers" EntitySet="UserFollowers" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_UsersState" Association="Self.FK_Users_UsersState">
       <End Role="UsersState" EntitySet="UsersState" />

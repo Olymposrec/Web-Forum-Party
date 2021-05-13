@@ -105,6 +105,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserFollowers.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>

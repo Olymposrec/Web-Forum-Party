@@ -12,6 +12,8 @@
     <Property Name="AddressID" Type="Int32" />
     <NavigationProperty Name="Adress" Relationship="Self.FK_AboutUsers_Adress" FromRole="AboutUsers" ToRole="Adress" />
     <NavigationProperty Name="Users" Relationship="Self.FK_AboutUsers_Users" FromRole="AboutUsers" ToRole="Users" />
+    <Property Name="ProfilImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AboutMe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Adress">
     <Key>
@@ -35,7 +37,7 @@
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categories" FromRole="Categories" ToRole="Posts" />
     <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Categories" FromRole="Categories" ToRole="Surveys" />
-    <Property Name="CategoryImage" Type="String" />
+    <Property Name="CategoryImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="Communities">
     <Key>
@@ -144,6 +146,8 @@
     <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Users" FromRole="Users" ToRole="Surveys" />
     <NavigationProperty Name="UsersState" Relationship="Self.FK_Users_UsersState" FromRole="Users" ToRole="UsersState" />
     <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="Users" ToRole="UsersCommunity" />
+    <NavigationProperty Name="UserFollowers" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="Users" ToRole="UserFollowers" />
+    <NavigationProperty Name="UserFollowers1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="Users" ToRole="UserFollowers" />
   </EntityType>
   <EntityType Name="UsersState">
     <Key>
@@ -367,6 +371,15 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersCommunity" EntitySet="UsersCommunity" />
     </AssociationSet>
+    <EntitySet Name="UserFollowers" EntityType="ForumPartyModel.UserFollowers" />
+    <AssociationSet Name="FK_UserFollowers_UserFollowers" Association="ForumPartyModel.FK_UserFollowers_UserFollowers">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserFollowers" EntitySet="UserFollowers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserFollowers_Users" Association="ForumPartyModel.FK_UserFollowers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserFollowers" EntitySet="UserFollowers" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="UsersCommunity">
     <Key>
@@ -399,6 +412,40 @@
       </Principal>
       <Dependent Role="UsersCommunity">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserFollowers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="FollowerID" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="UserFollowers" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="UserFollowers" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_UserFollowers_UserFollowers">
+    <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="ForumPartyModel.UserFollowers" Role="UserFollowers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFollowers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserFollowers_Users">
+    <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="ForumPartyModel.UserFollowers" Role="UserFollowers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFollowers">
+        <PropertyRef Name="FollowerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

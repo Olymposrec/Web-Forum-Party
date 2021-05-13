@@ -27,3 +27,4 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Deb
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CopyComplete
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.pdb
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csprojAssemblyReference.cache

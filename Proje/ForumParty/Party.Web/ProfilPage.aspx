@@ -1,32 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ProfilPage.aspx.cs" Inherits="Party.Web.ProfilPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Profile Page</h1>
-	<header>
-        <div class="container mt-5 d-flex justify-content-center">
-    <div class="card p-3">
-        <div class="d-flex align-items-center">
-            <div class="image">
-                <img src="<%#"data:image/jpeg;base64,"+ Convert.ToBase64String((byte[])Eval("ProfilImage"))%>  "  visible="false">
-               
-            </div>
-            <div class="ml-3 w-100">
-                 <h4 class="mb-0 mt-0"><%#Eval("ProfilOwner") %></h4>
-                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                    <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2"><%#Eval("Followers") %></span> </div>
-                </div>
-                <div class="button mt-2 d-flex flex-row align-items-center">
-                    <asp:Button ID="btn_follow" runat="server" Text="Follow"   class="btn btn-sm btn-primary w-100 ml-2"/>
-                    <asp:Button ID="btn_chat" runat="server" Text="Chat" class="btn btn-sm btn-outline-primary w-100" />
 
+ <asp:ScriptManager ID="ScriptManager1" runat="server" ></asp:ScriptManager>
+                           <div class="card mb-4">
+            <asp:DataList ID="DataList1" runat="server" OnSelectedIndexChanged="DataList1_SelectedIndexChanged" CssClass="auto-style1" OnItemCreated="DataList1_ItemCreated" > 
+                <ItemTemplate>
+                    <div class="card-title">
+                        <h2>Profile Page  </h2>
+                    </div>
+                     
+                            <img  runat="server"  class="card-img-top-sm rounded-circle mx-auto d-block" src='Resource/images/profilDefaultImage.png' width="160" height="160" style="margin-top:10px"/>
+                           <div class="card-body">
+                              <h2 class="card-title">
+                                  <%#Eval("Name") %>  <%#Eval("Surname") %>
+                              </h2>
+                              <h6 class="align-content-start"> 
+                                  <div class="row">
+                                      
+                                            <div class="col-md-4 "> <asp:Label ID="lbl_date" runat="server" ><%#Eval("UserName")%></asp:Label></div>
+                                            <div class="col-md-4 ml-auto text-right"><asp:LinkButton ID="LinkButton1" runat="server" class="text-left"><span class="followers">Followers</span> <span class="number2"><%#Eval("Followers") %></span></asp:LinkButton></div>
+                                    
+                                  </div>
+                              </h6>
+                               <asp:Label ID="lbl_aboutMe" runat="server" class="card-text"><%#Eval("AboutMe") %></asp:Label>
+                                <div >
+                                    <hr />
+                                </div>
+                               <div style="height:40px;width:fit-content()">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+                                   <asp:Button ID="btn_follow" OnClick="btn_follow_Click" runat="server" Text="Follow"   class="btn btn-primary "/>
+                                   <asp:Button ID="btn_chat" runat="server" Text="Chat" class="btn  btn-outline-primary" />
+                                   <asp:Button ID="btn_editProfil" runat="server" Text="Edit Profile"   class="btn btn-primary "/>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+                               </div>
+                                
+                           </div>
+                           
+                    </ItemTemplate>
+               </asp:DataList>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-        <br />
-	</header>
+                       
+      <br />
    
 
         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound">

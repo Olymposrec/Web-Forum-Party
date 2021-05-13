@@ -119,7 +119,7 @@
                     <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                         <ItemTemplate>
                             <asp:LinkButton ID="lb_category" OnClick="lb_category_Click" runat="server" class="list-group-item list-group-item-action"  >
-                                <img width="25" height="25" src='<%#Eval("CategoryImage") %>'></img>
+                                <img width="25" height="25" runat="server"  src='<%#Eval("CategoryImage") %>'></img>
                                 <%#Eval("CategoryName")%>
                                 
                             </asp:LinkButton>

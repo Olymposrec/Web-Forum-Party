@@ -149,6 +149,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUser.aspx" />
     <Content Include="AddPollPage.aspx" />
     <Content Include="AddPostPage.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1631,6 +1632,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUser.aspx.cs">
+      <DependentUpon>AboutUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUser.aspx.designer.cs">
+      <DependentUpon>AboutUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddPollPage.aspx.cs">
       <DependentUpon>AddPollPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

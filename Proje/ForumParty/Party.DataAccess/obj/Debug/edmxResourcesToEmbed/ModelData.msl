@@ -4,6 +4,8 @@
     <EntitySetMapping Name="AboutUsers">
       <EntityTypeMapping TypeName="ForumPartyModel.AboutUsers">
         <MappingFragment StoreEntitySet="AboutUsers">
+          <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+          <ScalarProperty Name="ProfilImage" ColumnName="ProfilImage" />
           <ScalarProperty Name="UsersInfoID" ColumnName="UsersInfoID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -145,6 +147,15 @@
         <MappingFragment StoreEntitySet="UsersCommunity">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFollowers">
+      <EntityTypeMapping TypeName="ForumPartyModel.UserFollowers">
+        <MappingFragment StoreEntitySet="UserFollowers">
+          <ScalarProperty Name="FollowerID" ColumnName="FollowerID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

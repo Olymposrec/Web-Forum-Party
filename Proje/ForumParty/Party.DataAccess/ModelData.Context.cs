@@ -38,5 +38,6 @@ namespace Party.DataAccess
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersState> UsersState { get; set; }
         public virtual DbSet<UsersCommunity> UsersCommunity { get; set; }
+        public virtual DbSet<UserFollowers> UserFollowers { get; set; }
     }
 }

@@ -12,18 +12,13 @@ namespace Party.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class AboutUsers
+    public partial class UserFollowers
     {
-        public int UsersInfoID { get; set; }
+        public int ID { get; set; }
         public Nullable<int> UserID { get; set; }
-        public string Name { get; set; }
-        public string SurName { get; set; }
-        public string Phone { get; set; }
-        public Nullable<int> AddressID { get; set; }
-        public byte[] ProfilImage { get; set; }
-        public string AboutMe { get; set; }
+        public Nullable<int> FollowerID { get; set; }
     
-        public virtual Adress Adress { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

@@ -15,6 +15,8 @@
           <Property Name="SurName" Type="varchar" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="30" />
           <Property Name="AddressID" Type="int" />
+          <Property Name="ProfilImage" Type="varbinary(max)" />
+          <Property Name="AboutMe" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Adress">
           <Key>
@@ -131,6 +133,14 @@ warning 6013: The table/view 'ForumParty.dbo.SurveyComments' does not have a pri
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserFollowers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="FollowerID" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -292,6 +302,30 @@ error 6004: The table 'ForumParty.dbo.SurveyComments' is referenced by a relatio
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserFollowers_UserFollowers">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserFollowers" Type="Self.UserFollowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFollowers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollowers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserFollowers" Type="Self.UserFollowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFollowers">
+              <PropertyRef Name="FollowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <!--Errors Found During Generation:
 error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a relationship, but cannot be found.
         <Association Name="FK_Users_CommunityPerm_CommunityPermissions" />-->
@@ -345,6 +379,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFollowers" EntityType="Self.UserFollowers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersCommunity" EntityType="Self.UsersCommunity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersState" EntityType="Self.UsersState" Schema="dbo" store:Type="Tables" />
@@ -388,6 +423,14 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
             <End Role="Users" EntitySet="Users" />
             <End Role="Surveys" EntitySet="Surveys" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserFollowers_UserFollowers" Association="Self.FK_UserFollowers_UserFollowers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFollowers" EntitySet="UserFollowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollowers_Users" Association="Self.FK_UserFollowers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFollowers" EntitySet="UserFollowers" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_UsersState" Association="Self.FK_Users_UsersState">
             <End Role="UsersState" EntitySet="UsersState" />
             <End Role="Users" EntitySet="Users" />
@@ -417,6 +460,8 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <Property Name="AddressID" Type="Int32" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_AboutUsers_Adress" FromRole="AboutUsers" ToRole="Adress" />
           <NavigationProperty Name="Users" Relationship="Self.FK_AboutUsers_Users" FromRole="AboutUsers" ToRole="Users" />
+          <Property Name="ProfilImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AboutMe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Adress">
           <Key>
@@ -440,7 +485,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categories" FromRole="Categories" ToRole="Posts" />
           <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Categories" FromRole="Categories" ToRole="Surveys" />
-          <Property Name="CategoryImage" Type="String" />
+          <Property Name="CategoryImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="Communities">
           <Key>
@@ -549,6 +594,8 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Users" FromRole="Users" ToRole="Surveys" />
           <NavigationProperty Name="UsersState" Relationship="Self.FK_Users_UsersState" FromRole="Users" ToRole="UsersState" />
           <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="Users" ToRole="UsersCommunity" />
+          <NavigationProperty Name="UserFollowers" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="Users" ToRole="UserFollowers" />
+          <NavigationProperty Name="UserFollowers1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="Users" ToRole="UserFollowers" />
         </EntityType>
         <EntityType Name="UsersState">
           <Key>
@@ -772,6 +819,15 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersCommunity" EntitySet="UsersCommunity" />
           </AssociationSet>
+          <EntitySet Name="UserFollowers" EntityType="ForumPartyModel.UserFollowers" />
+          <AssociationSet Name="FK_UserFollowers_UserFollowers" Association="ForumPartyModel.FK_UserFollowers_UserFollowers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFollowers" EntitySet="UserFollowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollowers_Users" Association="ForumPartyModel.FK_UserFollowers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFollowers" EntitySet="UserFollowers" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UsersCommunity">
           <Key>
@@ -807,6 +863,40 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserFollowers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="FollowerID" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="UserFollowers" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="UserFollowers" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_UserFollowers_UserFollowers">
+          <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="ForumPartyModel.UserFollowers" Role="UserFollowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFollowers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollowers_Users">
+          <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="ForumPartyModel.UserFollowers" Role="UserFollowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFollowers">
+              <PropertyRef Name="FollowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -816,6 +906,8 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
           <EntitySetMapping Name="AboutUsers">
             <EntityTypeMapping TypeName="ForumPartyModel.AboutUsers">
               <MappingFragment StoreEntitySet="AboutUsers">
+                <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+                <ScalarProperty Name="ProfilImage" ColumnName="ProfilImage" />
                 <ScalarProperty Name="UsersInfoID" ColumnName="UsersInfoID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -957,6 +1049,15 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
               <MappingFragment StoreEntitySet="UsersCommunity">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFollowers">
+            <EntityTypeMapping TypeName="ForumPartyModel.UserFollowers">
+              <MappingFragment StoreEntitySet="UserFollowers">
+                <ScalarProperty Name="FollowerID" ColumnName="FollowerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

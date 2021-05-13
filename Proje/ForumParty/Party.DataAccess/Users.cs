@@ -21,6 +21,8 @@ namespace Party.DataAccess
             this.Posts = new HashSet<Posts>();
             this.Surveys = new HashSet<Surveys>();
             this.UsersCommunity = new HashSet<UsersCommunity>();
+            this.UserFollowers = new HashSet<UserFollowers>();
+            this.UserFollowers1 = new HashSet<UserFollowers>();
         }
     
         public int UserID { get; set; }
@@ -38,5 +40,9 @@ namespace Party.DataAccess
         public virtual UsersState UsersState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersCommunity> UsersCommunity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFollowers> UserFollowers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFollowers> UserFollowers1 { get; set; }
     }
 }
