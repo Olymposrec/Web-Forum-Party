@@ -64,15 +64,13 @@
     <Property Name="UserID" Type="Int32" />
     <Property Name="CategoryID" Type="Int32" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="PrivacyID" Type="Int32" />
     <Property Name="UploadDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Like" Type="Int32" />
     <Property Name="CommunityID" Type="Int32" />
     <NavigationProperty Name="Categories" Relationship="Self.FK_Posts_Categories" FromRole="Posts" ToRole="Categories" />
     <NavigationProperty Name="Communities" Relationship="Self.FK_Posts_Communities" FromRole="Posts" ToRole="Communities" />
-    <NavigationProperty Name="Posts1" Relationship="Self.FK_Posts_Posts" FromRole="Posts" ToRole="Posts1" />
-    <NavigationProperty Name="Posts2" Relationship="Self.FK_Posts_Posts" FromRole="Posts1" ToRole="Posts" />
     <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
     <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -380,6 +378,40 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UserFollowers" EntitySet="UserFollowers" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ForumPartyModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ForumPartyModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spGetPosts" ReturnType="Collection(ForumPartyModel.spGetPosts_Result)">
+      <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="UsersCommunity">
     <Key>
@@ -449,4 +481,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetPosts_Result">
+    <Property Type="Int32" Name="PostID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="PrivacyID" Nullable="true" />
+    <Property Type="String" Name="UploadDate" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Like" Nullable="true" />
+    <Property Type="Int32" Name="CommunityID" Nullable="true" />
+    <Property Type="Binary" Name="PostImage" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
 </Schema>

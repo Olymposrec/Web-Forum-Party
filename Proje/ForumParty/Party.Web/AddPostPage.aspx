@@ -22,7 +22,7 @@
 
   <div class="form-group">
         <label for="textarea">Text Area</label> 
-    <asp:TextBox ID="txt_description" runat="server" placeholder="Description" TextMode="MultiLine" Rows="10" required="required" class="form-control" MaxLength="255" ></asp:TextBox>
+    <asp:TextBox ID="txt_description" runat="server" placeholder="Description" TextMode="MultiLine" Rows="10" required="required" class="form-control" MaxLength="500" ></asp:TextBox>
   </div>
   <div class="form-group">
     <label for="drp_category">Category</label> 

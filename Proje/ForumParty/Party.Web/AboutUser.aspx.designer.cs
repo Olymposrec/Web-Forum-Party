@@ -15,76 +15,130 @@ namespace Party.Web
     {
 
         /// <summary>
-        /// txt_title control.
+        /// profileImageUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_title;
+        protected global::System.Web.UI.WebControls.FileUpload profileImageUpload;
 
         /// <summary>
-        /// imageUpload control.
+        /// txt_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload imageUpload;
+        protected global::System.Web.UI.WebControls.TextBox txt_name;
 
         /// <summary>
-        /// txt_description control.
+        /// txt_surname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_description;
+        protected global::System.Web.UI.WebControls.TextBox txt_surname;
 
         /// <summary>
-        /// drp_category control.
+        /// txt_phone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_category;
+        protected global::System.Web.UI.WebControls.TextBox txt_phone;
 
         /// <summary>
-        /// SqlDataSource1 control.
+        /// txt_aboutMe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox txt_aboutMe;
 
         /// <summary>
-        /// drp_community control.
+        /// txt_road control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_community;
+        protected global::System.Web.UI.WebControls.TextBox txt_road;
 
         /// <summary>
-        /// RadioButton1 control.
+        /// txt_street control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
+        protected global::System.Web.UI.WebControls.TextBox txt_street;
 
         /// <summary>
-        /// RadioButton2 control.
+        /// txt_neighbor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
+        protected global::System.Web.UI.WebControls.TextBox txt_neighbor;
+
+        /// <summary>
+        /// txt_aptNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_aptNo;
+
+        /// <summary>
+        /// txt_floor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_floor;
+
+        /// <summary>
+        /// txt_District control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_District;
+
+        /// <summary>
+        /// txt_province control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_province;
+
+        /// <summary>
+        /// btn_Save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Save;
+
+        /// <summary>
+        /// btn_Update control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Update;
 
         /// <summary>
         /// lbl_result control.

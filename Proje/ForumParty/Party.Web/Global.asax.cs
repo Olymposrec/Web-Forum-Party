@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
@@ -55,7 +56,9 @@ namespace Party.Web
             RouteOtherProfile(RouteTable.Routes);
 
             RouteLogInPage(RouteTable.Routes);
+
             RouteCategoryArea(RouteTable.Routes);
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

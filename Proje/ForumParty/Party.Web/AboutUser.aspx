@@ -4,61 +4,61 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <form>
-  <div class="form-group">
-    <label for="text">Title</label> 
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <i class="bi bi-archive-fill"></i>
-        </div>
-      </div> 
-        <asp:TextBox ID="txt_title" runat="server" placeholder="Post Title" type="text" required="required" class="form-control"></asp:TextBox>
-    </div>
-  </div>
+
       <div class="form-control-file">
-        <label class="form-label" for="customFile">File Input.</label>
-          <asp:FileUpload  ID="imageUpload" runat="server"  type="file" class="form-control"></asp:FileUpload>
+        <label class="form-label" for="customFile"><b>Profile Image</b> </label>
+          <asp:FileUpload  ID="profileImageUpload" runat="server"  type="file" class="form-control"></asp:FileUpload>
       </div> 
+        <br />
+
+<hr />
+  <div class="form-group">
+       <label class="form-label"><b>Profile Information </b></label>
+      <br />
+    <asp:TextBox ID="txt_name" runat="server" placeholder="Name"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_surname" runat="server" placeholder="SurName"  type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_phone" runat="server" placeholder="5XX-XXX-XX-XX"  type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}"  required="required" class="form-control"></asp:TextBox>
+      <small>Format: 5XXXXXXXXX</small>
+      <br />
+    <br />
+    <asp:TextBox ID="txt_aboutMe" runat="server" placeholder=" About Me"  type="text" TextMode="MultiLine" required="required" class="form-control" rows="5" MaxLength="255" ></asp:TextBox>
+ </div>
+  <hr />
+<div class="form-group">
+    <label class="form-label"><b>Address Information</b> </label>
+    <br />
+    <asp:TextBox ID="txt_road" runat="server" placeholder="Road"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_street" runat="server" placeholder="Street"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_neighbor" runat="server" placeholder="Neighborhood"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_aptNo" runat="server" placeholder="Apartment No"   type="number" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_floor" runat="server" placeholder="Floor"   type="number" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_District" runat="server" placeholder="District"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="txt_province" runat="server" placeholder="Province"   type="text" required="required" class="form-control"></asp:TextBox>
+    <br />
+
+</div>
 
 
-  <div class="form-group">
-        <label for="textarea">Text Area</label> 
-    <asp:TextBox ID="txt_description" runat="server" placeholder="Description" TextMode="MultiLine" Rows="10" required="required" class="form-control" MaxLength="255" ></asp:TextBox>
+ 
+  <div class="btn-group">
+      <asp:Button runat="server" ID="btn_Save" Text="Save"  type="submit" class="btn btn-success" OnClick="btn_Save_Click"/>
+      <p>&nbsp</p>
+      <asp:Button runat="server" ID="btn_Update" Text="Update"  type="submit" class="btn btn-primary" OnClick="btn_Update_Click"/>
+      <br />
   </div>
-  <div class="form-group">
-    <label for="drp_category">Category</label> 
-    <div>
-        <asp:DropDownList ID="drp_category" runat="server" required="required" class="custom-select" DataSourceID="SqlDataSource1" DataTextField="CategoryName" DataValueField="CategoryID">
-            <asp:ListItem Selected="True" Value="-1">Select One</asp:ListItem>
-        </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ForumPartyConnectionString %>" SelectCommand="SELECT [CategoryID], [CategoryName] FROM [Categories]"></asp:SqlDataSource>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="select">Community</label> 
-    <div>
-      <asp:DropDownList ID="drp_community" runat="server" required="required" class="custom-select">
-          <asp:ListItem Selected="True" Value="-1">Select One</asp:ListItem>
-        </asp:DropDownList>
-        
-    </div>
-  </div>
-  <div class="form-group">
-    <label>Privacy State</label> 
-    <div>
-      <div class="custom-control custom-radio custom-control-inline">
-          <asp:RadioButton ID="RadioButton1" type="radio" runat="server" GroupName="privacyState" Text=" Public" Checked="true"/>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-          
-          <asp:RadioButton ID="RadioButton2" type="radio" runat="server" GroupName="privacyState" Text=" Private" />
-      </div>
-    </div>
-  </div> 
-            <asp:Label ID="lbl_result" runat="server" Text=""></asp:Label>
-  <div class="form-group">
-      <asp:Button runat="server" Text="Submit"  type="submit" class="btn btn-primary" OnClick="Unnamed2_Click"/>
-  </div>
+
+
+ <asp:Label ID="lbl_result" runat="server" Text=""></asp:Label>
+
+        <br />
 </form>
 
 

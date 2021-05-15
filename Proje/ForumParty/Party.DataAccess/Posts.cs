@@ -27,8 +27,6 @@ namespace Party.DataAccess
     
         public virtual Categories Categories { get; set; }
         public virtual Communities Communities { get; set; }
-        public virtual Posts Posts1 { get; set; }
-        public virtual Posts Posts2 { get; set; }
         public virtual PrivacyStatement PrivacyStatement { get; set; }
         public virtual Users Users { get; set; }
     }

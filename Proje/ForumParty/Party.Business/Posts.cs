@@ -22,7 +22,7 @@ namespace Party.Business
                               PostID=p.PostID,
                               Title = p.Title,
                               Description = p.Description,
-                              UploadData = p.UploadDate,
+                              UploadDate = p.UploadDate,
                               CategoryID = c.CategoryName,
                               UserID = u.UserName,
                               PostImage=p.PostImage,

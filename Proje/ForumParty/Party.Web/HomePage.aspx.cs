@@ -14,7 +14,6 @@ namespace Party.Web
         {
 
 
-
             if (Session["UserName"] != null)
             {
 

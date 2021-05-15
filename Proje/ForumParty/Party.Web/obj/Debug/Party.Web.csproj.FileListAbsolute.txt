@@ -191,3 +191,11 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Part
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\obj\Debug\Party.Web.pdb
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\AjaxControlToolkit.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\Newtonsoft.Json.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Net.Http.Formatting.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Web.Http.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Web.Http.WebHost.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\Newtonsoft.Json.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Net.Http.Formatting.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Web.Http.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Web\bin\System.Web.Http.WebHost.xml
