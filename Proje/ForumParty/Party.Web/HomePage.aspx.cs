@@ -37,7 +37,7 @@ namespace Party.Web
                 RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
                 Label post = (Label)item.FindControl("Label1") as Label;
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-                int postID = int.Parse(post.Text);
+                int postID = int.Parse(post.Text.ToString());
                 var result = data.Find(x => x.PostID == postID);
                 result.Like++;
                 data.Update(result);
@@ -79,14 +79,15 @@ namespace Party.Web
             }
             else
             {
-                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                //RepeaterItem item = (sender as Repeater).Parent as RepeaterItem;
+                RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
                 Label post = (Label)item.FindControl("Label1") as Label;
                 Label user = (Label)item.FindControl("Label2") as Label;
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
                 int postID = int.Parse(post.Text);
                 string userName = user.Text;
                 Session["ClickedPostID"] = postID;
-                Response.Redirect("/PostDetail/" + postID + "/" + userName + "");
+                Response.Redirect("/PostDetail/" + postID + "/" + userName);
             }
             
         }
@@ -96,13 +97,14 @@ namespace Party.Web
         {
             if (Session["UserName"] != null)
             {
+                
                 RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-                Label post = (Label)item.FindControl("Label1") as Label;
-                Label user = (Label)item.FindControl("Label2") as Label;
+                Label post = (Label)item.FindControl("Label1");
+                LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
                 int postID = int.Parse(post.Text);
                 string userName = user.Text;
-                Response.Redirect("/Profile/" + postID + "/" + userName + "");
+                Response.Redirect("/Profile/" + postID + "/" + userName);
             }
             else
             {

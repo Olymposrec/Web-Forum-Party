@@ -75,7 +75,6 @@
  
 
 
-<div id="test">
    <asp:Repeater ID="Repeater1" runat="server">
     <ItemTemplate>
                  <div  class="card mb-4" id="test_ID">
@@ -83,14 +82,28 @@
                           
                            <div class="card-body">
                               <h2 class="card-title">
-                                  <asp:Label ID="lbl_title" runat="server" ><%#Eval("Title") %></asp:Label>
+                                  <asp:Label ID="lbl_title" runat="server" Text='<%#Eval("Title") %>' ></asp:Label>
                               </h2>
                               <h6 class="align-content-sm-end"> 
                                   <div class="row">
-                                        <asp:Label ID="Label1" runat="server"  Visible="false"><%#Eval("PostID")%> </asp:Label>
-                                      <asp:Label ID="Label2" runat="server"  Visible="false"><%#Eval("UserID")%> </asp:Label>
-                                            <div class="col-md-4"><asp:LinkButton ID="lb_UserProfile" OnClick="lb_UserProfile_Click" runat="server" class="text-left"><i class="bi bi-person-fill" type="button"></i> <%#Eval("UserID") %></asp:LinkButton></div>
-                                            <div class="col-md-4 ml-auto text-right"> <asp:Label ID="lbl_date" runat="server" ><i class="bi bi-clock-fill"></i><%#Eval("UploadDate")%> </asp:Label></div>
+                                        <asp:Label ID="Label1" runat="server"  Visible="false" Text='<%#Eval("PostID")%>'> 
+
+                                        </asp:Label>
+                                      <asp:Label ID="Label2" runat="server"  Visible="false" Text='<%#Eval("UserID")%> '>
+
+                                      </asp:Label>
+                                            <div class="col-md-4">
+                                                <i class="bi bi-person-fill"></i> <asp:LinkButton ID="lb_UserProfile" OnClick="lb_UserProfile_Click" runat="server" class="text-left" Text='<%#Eval("UserID")%>'>
+                                                   
+
+                                                </asp:LinkButton>
+
+                                            </div>
+                                            <div class="col-md-4 ml-auto text-right">
+                                                 <i class="bi bi-clock-fill"></i> <asp:Label ID="lbl_date" runat="server" text='<%#Eval("UploadDate")%>'>
+                                                   </asp:Label>
+
+                                            </div>
                                     
                                   </div>
                               </h6>
@@ -100,7 +113,7 @@
                                 </div>
                                <div style="height:40px;width:fit-content()">
                                             <asp:LinkButton ID="lbl_upvote" OnClick="lbl_upvote_Click" runat="server"  type="button" class="btn btn-success" > <i class="bi bi-chevron-up"></i></asp:LinkButton>
-                                            <asp:Label ID="lbl_likecount"  runat="server" class="h5" ><b><%#Eval("Like") %></b></asp:Label>
+                                            <b><asp:Label ID="lbl_likecount"  runat="server" class="h5" Text='<%#Eval("Like") %>' ></asp:Label></b>
                                             <asp:LinkButton ID="lbl_downvote" OnClick="lbl_downvote_Click"  runat ="server"  type="button" class="btn btn-danger" > <i class="bi bi-chevron-down"></i></asp:LinkButton>
                                         <asp:LinkButton ID="lb_Detail" OnClick="lb_Detail_Click" runat="server"  type="button" class="btn btn-info">Detail <i class="bi bi-info-circle-fill"></i></asp:LinkButton>
      
@@ -111,7 +124,7 @@
             </ItemTemplate>
 
         </asp:Repeater>
-</div>
+
 
 
 

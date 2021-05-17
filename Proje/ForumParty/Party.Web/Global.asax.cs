@@ -23,7 +23,7 @@ namespace Party.Web
         {
             route.MapPageRoute("Profile", "Profile/{UserName}", "~/ProfilPage.aspx");
         }
-        void RouteAppPostPage(RouteCollection route)
+        void RouteAddPostPage(RouteCollection route)
         {
             route.MapPageRoute("AddPost", "AddPost", "~/AddPostPage.aspx");
         }
@@ -49,7 +49,7 @@ namespace Party.Web
             
             RouteProfile(RouteTable.Routes);
 
-            RouteAppPostPage(RouteTable.Routes);
+            RouteAddPostPage(RouteTable.Routes);
 
             RouteHomePage(RouteTable.Routes);
 
