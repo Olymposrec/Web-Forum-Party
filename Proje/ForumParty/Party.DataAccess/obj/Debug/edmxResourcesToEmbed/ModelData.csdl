@@ -48,6 +48,8 @@
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Communities" FromRole="Communities" ToRole="Posts" />
     <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Communities" FromRole="Communities" ToRole="UsersCommunity" />
+    <Property Name="CommunityImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MembersCount" Type="Int32" />
   </EntityType>
   <EntityType Name="CommunityPermissions">
     <Key>
@@ -55,6 +57,7 @@
     </Key>
     <Property Name="CommunityPermID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PermDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_CommunityPermissions" FromRole="CommunityPermissions" ToRole="UsersCommunity" />
   </EntityType>
   <EntityType Name="Posts">
     <Key>
@@ -74,6 +77,7 @@
     <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="Posts" ToRole="PrivacyStatement" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
     <Property Name="PostImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="PostCommnets" Relationship="ForumPartyModel.FK_PostCommnets_Posts" FromRole="Posts" ToRole="PostCommnets" />
   </EntityType>
   <EntityType Name="PrivacyStatement">
     <Key>
@@ -146,6 +150,7 @@
     <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="Users" ToRole="UsersCommunity" />
     <NavigationProperty Name="UserFollowers" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="Users" ToRole="UserFollowers" />
     <NavigationProperty Name="UserFollowers1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="Users" ToRole="UserFollowers" />
+    <NavigationProperty Name="PostCommnets" Relationship="ForumPartyModel.FK_PostCommnets_Users" FromRole="Users" ToRole="PostCommnets" />
   </EntityType>
   <EntityType Name="UsersState">
     <Key>
@@ -412,6 +417,19 @@
       <Parameter Name="PageNumber" Mode="In" Type="Int32" />
       <Parameter Name="PageSize" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="PostCommnets" EntityType="ForumPartyModel.PostCommnets" />
+    <AssociationSet Name="FK_PostCommnets_Posts" Association="ForumPartyModel.FK_PostCommnets_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="PostCommnets" EntitySet="PostCommnets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCommnets_Users" Association="ForumPartyModel.FK_PostCommnets_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PostCommnets" EntitySet="PostCommnets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersCommunity_CommunityPermissions" Association="ForumPartyModel.FK_UsersCommunity_CommunityPermissions">
+      <End Role="CommunityPermissions" EntitySet="CommunityPermissions" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="UsersCommunity">
     <Key>
@@ -422,6 +440,8 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Communities" Relationship="ForumPartyModel.FK_UsersCommunity_Communities" FromRole="UsersCommunity" ToRole="Communities" />
     <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="UsersCommunity" ToRole="Users" />
+    <Property Name="CommunityStateID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CommunityPermissions" Relationship="ForumPartyModel.FK_UsersCommunity_CommunityPermissions" FromRole="UsersCommunity" ToRole="CommunityPermissions" />
   </EntityType>
   <Association Name="FK_UsersCommunity_Communities">
     <End Type="ForumPartyModel.Communities" Role="Communities" Multiplicity="1" />
@@ -505,4 +525,52 @@
     <Property Type="Binary" Name="PostImage" Nullable="true" />
     <Property Type="Int64" Name="RowNumber" Nullable="true" />
   </ComplexType>
+  <EntityType Name="PostCommnets">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" />
+    <Property Name="PostID" Type="Int32" />
+    <Property Name="PostDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="Posts" Relationship="ForumPartyModel.FK_PostCommnets_Posts" FromRole="PostCommnets" ToRole="Posts" />
+    <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_PostCommnets_Users" FromRole="PostCommnets" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_PostCommnets_Posts">
+    <End Type="ForumPartyModel.Posts" Role="Posts" Multiplicity="0..1" />
+    <End Type="ForumPartyModel.PostCommnets" Role="PostCommnets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="PostCommnets">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCommnets_Users">
+    <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="ForumPartyModel.PostCommnets" Role="PostCommnets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PostCommnets">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersCommunity_CommunityPermissions">
+    <End Type="ForumPartyModel.CommunityPermissions" Role="CommunityPermissions" Multiplicity="1" />
+    <End Type="ForumPartyModel.UsersCommunity" Role="UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunityPermissions">
+        <PropertyRef Name="CommunityPermID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="CommunityStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

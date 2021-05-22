@@ -41,6 +41,8 @@
     <EntitySetMapping Name="Communities">
       <EntityTypeMapping TypeName="ForumPartyModel.Communities">
         <MappingFragment StoreEntitySet="Communities">
+          <ScalarProperty Name="MembersCount" ColumnName="MembersCount" />
+          <ScalarProperty Name="CommunityImage" ColumnName="CommunityImage" />
           <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
           <ScalarProperty Name="CommunityName" ColumnName="CommunityName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -145,6 +147,7 @@
     <EntitySetMapping Name="UsersCommunity">
       <EntityTypeMapping TypeName="ForumPartyModel.UsersCommunity">
         <MappingFragment StoreEntitySet="UsersCommunity">
+          <ScalarProperty Name="CommunityStateID" ColumnName="CommunityStateID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -201,5 +204,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="PostCommnets">
+      <EntityTypeMapping TypeName="ForumPartyModel.PostCommnets">
+        <MappingFragment StoreEntitySet="PostCommnets">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

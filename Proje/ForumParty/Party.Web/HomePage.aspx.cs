@@ -16,16 +16,56 @@ namespace Party.Web
 
             if (Session["UserName"] != null)
             {
+                DataAccess.ForumPartyEntities1 homePageData = new DataAccess.ForumPartyEntities1();
+                var result = (from p in homePageData.Posts
+                              from c in homePageData.Categories
+                              from u in homePageData.Users
+                              where c.CategoryID == p.CategoryID && p.UserID == u.UserID && p.PrivacyID != 1
+                              select new
+                              {
+                                  PostID = p.PostID,
+                                  Title = p.Title,
+                                  Description = p.Description,
+                                  UploadDate = p.UploadDate,
+                                  CategoryID = p.Categories.CategoryID,
+                                  UserName = p.Users.UserName,
+                                  PostImage = p.PostImage,
+                                  Like = p.Like,
+                                  UserID = p.Users.UserID,
+                                  CommunityName = p.Communities.CommunityName,
+                                  CommunityID = p.Communities.CommunityID
 
-                Business.Posts test = new Business.Posts();
-                Repeater1.DataSource = test.SpecificGetPosts();
+                              }).OrderBy(x => x.UploadDate).ToList();
+
+
+                Repeater1.DataSource = result;
                 Repeater1.DataBind();
             }
             else
             {
 
-                Business.Posts test = new Business.Posts();
-                Repeater1.DataSource = test.SpecificGetPosts();
+                DataAccess.ForumPartyEntities1 homePageData = new DataAccess.ForumPartyEntities1();
+                var result = (from p in homePageData.Posts
+                              from c in homePageData.Categories
+                              from u in homePageData.Users
+                              where c.CategoryID == p.CategoryID && p.UserID == u.UserID && p.PrivacyID != 1
+                              select new
+                              {
+                                  PostID = p.PostID,
+                                  Title = p.Title,
+                                  Description = p.Description,
+                                  UploadDate = p.UploadDate,
+                                  CategoryID = p.Categories.CategoryID,
+                                  UserName = p.Users.UserName,
+                                  PostImage = p.PostImage,
+                                  Like = p.Like,
+                                  UserID = p.Users.UserID,
+                                  CommunityName = p.Communities.CommunityName,
+                                  CommunityID= p.Communities.CommunityID
+                              }).OrderBy(x => x.UploadDate).ToList();
+
+
+                Repeater1.DataSource = result;
                 Repeater1.DataBind();
             }
         }
@@ -46,7 +86,27 @@ namespace Party.Web
             {
                 Response.Redirect("/LogInPage");
             }
-            
+
+
+        }
+        protected void lb_Comment_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("/LogInPage");
+            }
+            else
+            {
+                //RepeaterItem item = (sender as Repeater).Parent as RepeaterItem;
+                RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+                Label post = (Label)item.FindControl("Label1") as Label;
+                LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                string userName = user.Text;
+                Session["ClickedPostID"] = postID;
+                Response.Redirect("/PostDetail/" + postID + "/" + userName);
+            }
 
         }
 
@@ -66,7 +126,7 @@ namespace Party.Web
             {
                 Response.Redirect("/LogInPage");
             }
-            
+
         }
 
 
@@ -82,14 +142,14 @@ namespace Party.Web
                 //RepeaterItem item = (sender as Repeater).Parent as RepeaterItem;
                 RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
                 Label post = (Label)item.FindControl("Label1") as Label;
-                Label user = (Label)item.FindControl("Label2") as Label;
+                LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
                 int postID = int.Parse(post.Text);
                 string userName = user.Text;
                 Session["ClickedPostID"] = postID;
                 Response.Redirect("/PostDetail/" + postID + "/" + userName);
             }
-            
+
         }
 
 
@@ -97,23 +157,42 @@ namespace Party.Web
         {
             if (Session["UserName"] != null)
             {
-                
+
                 RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-                Label post = (Label)item.FindControl("Label1");
+                Label userIDLabel = (Label)item.FindControl("Label2") as Label;
                 LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-                int postID = int.Parse(post.Text);
+                int UserID = int.Parse(userIDLabel.Text.ToString());
                 string userName = user.Text;
-                Response.Redirect("/Profile/" + postID + "/" + userName);
+                Response.Redirect("/Profile/" + UserID + "/" + userName);
             }
             else
             {
                 Response.Redirect("/LogInPage");
             }
 
-           
+
         }
 
+        protected void community_Linkbtn_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] != null)
+            {
+
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                LinkButton communityNameIndex = (LinkButton)item.FindControl("community_Linkbtn");
+                LinkButton communityIDIndex = (LinkButton)item.FindControl("lb_CommunityID");
+                string communityName = communityNameIndex.Text.ToString();
+                int communityID = Convert.ToInt32(communityIDIndex.Text.ToString());
+                Response.Redirect("/Community/" + communityID + "/" + communityName);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
+
+
+        }
 
 
         //protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)

@@ -168,6 +168,7 @@
     <Content Include="AddPollPage.aspx" />
     <Content Include="AddPostPage.aspx" />
     <None Include="Connected Services\ServiceReference1\ASMXTest.wsdl" />
+    <Content Include="CommunityPage.aspx" />
     <Content Include="Connected Services\ServiceReference1\Party.Web.ServiceReference1.AdlariListeleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1601,6 +1602,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\ASMXTest.disco" />
+    <Content Include="Scripts\successAlert.js" />
     <Content Include="WebService\ASMXTest.asmx" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -1701,6 +1703,13 @@
     </Compile>
     <Compile Include="AddPostPage.aspx.designer.cs">
       <DependentUpon>AddPostPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommunityPage.aspx.cs">
+      <DependentUpon>CommunityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommunityPage.aspx.designer.cs">
+      <DependentUpon>CommunityPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>

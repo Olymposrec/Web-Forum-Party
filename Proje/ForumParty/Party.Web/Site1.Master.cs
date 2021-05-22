@@ -18,6 +18,12 @@ namespace Party.Web
                 Repository<DataAccess.Categories> repoList = new Repository<DataAccess.Categories>();
                 Repeater1.DataSource = repoList.List();
                 Repeater1.DataBind();
+
+                Repository<DataAccess.Communities> repoCommWeekly = new Repository<DataAccess.Communities>();
+                DataAccess.Communities weeklyComm = new DataAccess.Communities()
+                {
+
+                };
             }
 
             
@@ -108,7 +114,7 @@ namespace Party.Web
             }
             else
             {
-                Response.Redirect("MessagesPage.aspx");
+                Response.Redirect("/Messages/" + Session["UserName"].ToString());
             }
            
 

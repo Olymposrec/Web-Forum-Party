@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelData.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PostCommnets.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Posts.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>

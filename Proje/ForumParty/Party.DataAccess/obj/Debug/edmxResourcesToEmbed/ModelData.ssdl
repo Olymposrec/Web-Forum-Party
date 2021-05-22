@@ -41,6 +41,8 @@
     <Property Name="CommunityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CommunityName" Type="varchar" MaxLength="50" />
     <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="CommunityImage" Type="varbinary(max)" />
+    <Property Name="MembersCount" Type="int" />
   </EntityType>
   <EntityType Name="CommunityPermissions">
     <Key>
@@ -49,15 +51,16 @@
     <Property Name="CommunityPermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PermDescription" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'ForumParty.dbo.PostCommnets' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PostCommnets">
-          <Property Name="CommentID" Type="int" />
-          <Property Name="PostID" Type="int" />
-          <Property Name="PostDate" Type="varchar" MaxLength="50" />
-          <Property Name="Content" Type="varchar" MaxLength="255" />
-          <Property Name="UserID" Type="int" />
-        </EntityType>-->
+  <EntityType Name="PostCommnets">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostID" Type="int" />
+    <Property Name="PostDate" Type="varchar" MaxLength="50" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
   <EntityType Name="Posts">
     <Key>
       <PropertyRef Name="PostID" />
@@ -160,6 +163,7 @@ warning 6013: The table/view 'ForumParty.dbo.Users_CommunityPerm' does not have 
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CommunityID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CommunityStateID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UsersState">
     <Key>
@@ -192,12 +196,30 @@ warning 6013: The table/view 'ForumParty.dbo.Users_CommunityPerm' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-error 6004: The table 'ForumParty.dbo.PostCommnets' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_PostCommnets_Posts" />-->
-  <!--Errors Found During Generation:
-error 6004: The table 'ForumParty.dbo.PostCommnets' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_PostCommnets_Users" />-->
+  <Association Name="FK_PostCommnets_Posts">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+    <End Role="PostCommnets" Type="Self.PostCommnets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="PostCommnets">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostCommnets_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PostCommnets" Type="Self.PostCommnets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PostCommnets">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Posts_Categories">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
@@ -351,6 +373,18 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UsersCommunity_CommunityPermissions">
+    <End Role="CommunityPermissions" Type="Self.CommunityPermissions" Multiplicity="1" />
+    <End Role="UsersCommunity" Type="Self.UsersCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunityPermissions">
+        <PropertyRef Name="CommunityPermID" />
+      </Principal>
+      <Dependent Role="UsersCommunity">
+        <PropertyRef Name="CommunityStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UsersCommunity_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UsersCommunity" Type="Self.UsersCommunity" Multiplicity="*" />
@@ -404,6 +438,7 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Communities" EntityType="Self.Communities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CommunityPermissions" EntityType="Self.CommunityPermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostCommnets" EntityType="Self.PostCommnets" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrivacyStatement" EntityType="Self.PrivacyStatement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
@@ -420,6 +455,14 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     <AssociationSet Name="FK_AboutUsers_Users" Association="Self.FK_AboutUsers_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="AboutUsers" EntitySet="AboutUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCommnets_Posts" Association="Self.FK_PostCommnets_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="PostCommnets" EntitySet="PostCommnets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostCommnets_Users" Association="Self.FK_PostCommnets_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PostCommnets" EntitySet="PostCommnets" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Categories" Association="Self.FK_Posts_Categories">
       <End Role="Categories" EntitySet="Categories" />
@@ -467,6 +510,10 @@ error 6004: The table 'ForumParty.dbo.Users_CommunityPerm' is referenced by a re
     </AssociationSet>
     <AssociationSet Name="FK_UsersCommunity_Communities" Association="Self.FK_UsersCommunity_Communities">
       <End Role="Communities" EntitySet="Communities" />
+      <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersCommunity_CommunityPermissions" Association="Self.FK_UsersCommunity_CommunityPermissions">
+      <End Role="CommunityPermissions" EntitySet="CommunityPermissions" />
       <End Role="UsersCommunity" EntitySet="UsersCommunity" />
     </AssociationSet>
     <AssociationSet Name="FK_UsersCommunity_Users" Association="Self.FK_UsersCommunity_Users">

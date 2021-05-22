@@ -50,10 +50,10 @@ namespace Party.Web
                         int privacyID;
                         if (RadioButton1.Checked)
                         {
-                            privacyID = 1;
+                            privacyID = 2;
                         }
                         else
-                            privacyID = 2;
+                            privacyID = 1;
 
 
                         byte[] bytes = null;

@@ -40,7 +40,7 @@
 <body>
     <form runat="server">
      <!-- Navigation -->
-     
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container mr-auto">
         <asp:LinkButton ID="LinkButton7" runat="server"  OnClick="HomePage_Click" class="navbar-brand" type="button">
@@ -146,19 +146,12 @@
           <h5 class="card-header">Trending Communities</h5>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> VegaCommunity</a>
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> OlymposCommunity</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> CloserCommunity</a>
-            </ul>
-          </div>
-        </div>
-          <div class="card my-4">
-          <h5 class="card-header">Popular This Week</h5>
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> VegaCommunity</a>
-                     <a href="#" class="list-group-item list-group-item-action"><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> OlymposCommunity</a>
-                     <a href="#" class="list-group-item list-group-item-action "><img width="25" height="25" src="Resource/images/homepageLogo2.jpg" /> CloserCommunity</a>
+                <asp:Repeater ID="Repeater2_TrendComm" runat="server">
+                    <ItemTemplate>
+                    <i class="bi bi-people-fill"></i> <asp:LinkButton ID="lb_Community" runat="server" class="list-group-item list-group-item-action" Text='<%#Eval("CommunityNameTrend") %>'></asp:LinkButton>
+
+                    </ItemTemplate>
+                </asp:Repeater>
             </ul>
           </div>
         </div>

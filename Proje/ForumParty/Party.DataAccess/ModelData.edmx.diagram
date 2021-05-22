@@ -35,6 +35,10 @@
         <EntityTypeShape EntityType="ForumPartyModel.UserFollowers" Width="1.5" PointX="9.625" PointY="9.625" />
         <AssociationConnector Association="ForumPartyModel.FK_UserFollowers_UserFollowers" />
         <AssociationConnector Association="ForumPartyModel.FK_UserFollowers_Users" />
+        <EntityTypeShape EntityType="ForumPartyModel.PostCommnets" Width="1.5" PointX="12.25" PointY="10.875" />
+        <AssociationConnector Association="ForumPartyModel.FK_PostCommnets_Posts" />
+        <AssociationConnector Association="ForumPartyModel.FK_PostCommnets_Users" />
+        <AssociationConnector Association="ForumPartyModel.FK_UsersCommunity_CommunityPermissions" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,7 +13,7 @@ namespace Party.Web
     {
         void RouteCustom(RouteCollection route)
         {
-            route.MapPageRoute("Detail","PostDetail/{PostID}/{UserID}","~/PostDetail.aspx");
+            route.MapPageRoute("Detail","PostDetail/{PostID}/{UserName}","~/PostDetail.aspx");
         }
         void RouteOtherProfile(RouteCollection route)
         {
@@ -22,6 +22,10 @@ namespace Party.Web
         void RouteProfile(RouteCollection route)
         {
             route.MapPageRoute("Profile", "Profile/{UserName}", "~/ProfilPage.aspx");
+        }
+        void RouteCommunityProfile(RouteCollection route)
+        {
+            route.MapPageRoute("Community", "Community/{CommunityID}/{CommunityName}", "~/CommunityPage.aspx");
         }
         void RouteAddPostPage(RouteCollection route)
         {
@@ -36,10 +40,18 @@ namespace Party.Web
         {
             route.MapPageRoute("LogInPage", "LogInPage", "~/LogInPage.aspx");
         }
+        void RouteUserDetail(RouteCollection route)
+        {
+            route.MapPageRoute("AboutUser", "AboutUser", "~/AboutUser.aspx");
+        }
 
         void RouteCategoryArea(RouteCollection route)
         {
             route.MapPageRoute("Category", "HomePage/{CategoryName}", "~/Homepage.aspx");
+        }
+        void RouteMessagePage(RouteCollection route)
+        {
+            route.MapPageRoute("MessagePage", "Messages/{UserName}", "~/MessagesPage.aspx");
         }
 
 
@@ -58,6 +70,12 @@ namespace Party.Web
             RouteLogInPage(RouteTable.Routes);
 
             RouteCategoryArea(RouteTable.Routes);
+
+            RouteUserDetail(RouteTable.Routes);
+
+            RouteMessagePage(RouteTable.Routes);
+
+            RouteCommunityProfile(RouteTable.Routes);
 
         }
 

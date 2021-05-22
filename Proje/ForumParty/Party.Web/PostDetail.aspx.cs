@@ -14,13 +14,13 @@ namespace Party.Web
         {
 
             int postID = int.Parse(RouteData.Values["PostID"].ToString());
-            var userID = RouteData.Values["UserID"].ToString();
+            var userName = RouteData.Values["UserName"].ToString();
 
             DataAccess.ForumPartyEntities1 data = new DataAccess.ForumPartyEntities1();
 
             var result = (from p in data.Posts
                           from u in data.Users
-                          where p.PostID == postID && u.UserName == userID
+                          where p.PostID == postID && u.UserName == userName
                           select new
                           {
                               Title = p.Title,
@@ -34,6 +34,21 @@ namespace Party.Web
             Repeater2.DataSource = result;
             Repeater2.DataBind();
 
+            DataAccess.ForumPartyEntities1 comment = new DataAccess.ForumPartyEntities1();
+
+            var comResult= (from p in comment.PostCommnets
+                            where p.PostID==postID
+                            select new
+                            {
+                                CommentID=p.CommentID,
+                                PostID=p.Posts.PostID,
+                                CommentDate=p.PostDate,
+                                Content=p.Content,
+                                NickName=p.Users.UserName
+
+                            }).ToList();
+            Repeater1.DataSource = comResult;
+            Repeater1.DataBind();
 
             if (RouteData.Values["PostID"] != null && RouteData.Values["UserID"] != null)
             {
@@ -67,6 +82,26 @@ namespace Party.Web
             result.Like--;
             data.Update(result);
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btn_comment_Click(object sender, EventArgs e)
+        {
+            int postID = Convert.ToInt32(RouteData.Values["PostID"].ToString());
+            int userID = Convert.ToInt32(Session["UserID"].ToString());
+            Repository<DataAccess.PostCommnets> repo = new Repository<DataAccess.PostCommnets>();
+            DataAccess.PostCommnets commentInsert = new DataAccess.PostCommnets()
+            {
+                PostID = postID,
+                PostDate = DateTime.Today.ToShortDateString(),
+                Content = txt_Comment.Text,
+                UserID=userID
+            };
+
+            repo.Insert(commentInsert);
+
+            string userName = RouteData.Values["UserName"].ToString();
+                Session["ClickedPostID"] = postID;
+            Response.Redirect("/PostDetail/" + postID + "/" + userName);
         }
     }
 }

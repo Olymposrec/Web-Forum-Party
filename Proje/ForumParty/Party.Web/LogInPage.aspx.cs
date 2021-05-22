@@ -66,6 +66,7 @@ namespace Party.Web
                     Repository<Party.DataAccess.Users> repo = new Repository<Party.DataAccess.Users>();
                     Repository<Party.DataAccess.Communities> repo2 = new Repository<DataAccess.Communities>();
                     Repository<Party.DataAccess.UsersCommunity> repo3 = new Repository<DataAccess.UsersCommunity>();
+                    Repository<Party.DataAccess.AboutUsers> repo4 = new Repository<DataAccess.AboutUsers>();
                     
 
                     DataAccess.Users newUser = new DataAccess.Users
@@ -81,6 +82,7 @@ namespace Party.Web
                         CommunityName = txt_usernameRegister.Text
                     };
 
+                    
                    
 
                     var checkUser = repo.Find(p => p.UserName == txt_usernameRegister.Text || p.UserMail == txt_usermailRegister.Text);
@@ -101,6 +103,12 @@ namespace Party.Web
                             UserID = newUser.UserID
                         };
                         repo3.Insert(newUserComm);
+
+                        DataAccess.AboutUsers newAboutUser = new DataAccess.AboutUsers
+                        {
+                            UserID = newUser.UserID
+                        };
+                        repo4.Insert(newAboutUser);
 
                     }
 

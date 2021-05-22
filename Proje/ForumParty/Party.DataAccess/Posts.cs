@@ -14,6 +14,12 @@ namespace Party.DataAccess
     
     public partial class Posts
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Posts()
+        {
+            this.PostCommnets = new HashSet<PostCommnets>();
+        }
+    
         public int PostID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> CategoryID { get; set; }
@@ -29,5 +35,7 @@ namespace Party.DataAccess
         public virtual Communities Communities { get; set; }
         public virtual PrivacyStatement PrivacyStatement { get; set; }
         public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostCommnets> PostCommnets { get; set; }
     }
 }

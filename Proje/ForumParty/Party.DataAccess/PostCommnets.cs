@@ -12,15 +12,15 @@ namespace Party.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersCommunity
+    public partial class PostCommnets
     {
-        public int ID { get; set; }
-        public int CommunityID { get; set; }
-        public int UserID { get; set; }
-        public int CommunityStateID { get; set; }
+        public int CommentID { get; set; }
+        public Nullable<int> PostID { get; set; }
+        public string PostDate { get; set; }
+        public string Content { get; set; }
+        public Nullable<int> UserID { get; set; }
     
-        public virtual Communities Communities { get; set; }
+        public virtual Posts Posts { get; set; }
         public virtual Users Users { get; set; }
-        public virtual CommunityPermissions CommunityPermissions { get; set; }
     }
 }
