@@ -35,6 +35,7 @@
                             <ContentTemplate>
                                 <asp:Button ID="btn_Join" OnClick="btn_join_Click" runat="server" Text="Join" class="btn btn-primary " />
                                 <asp:Button ID="btn_editProfil" runat="server" Text="Edit Profile" OnClick="btn_editProfil_Click" class="btn btn-primary " />
+                                <asp:Button ID="btn_delete" runat="server" OnClick="btn_delete_Click" Text="Delete" class="btn btn-primary " />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>

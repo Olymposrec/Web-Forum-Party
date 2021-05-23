@@ -13,23 +13,26 @@ namespace Party.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int getID = Convert.ToInt32(value: Session["UserID"]);
-            DataAccess.ForumPartyEntities1 data = new DataAccess.ForumPartyEntities1();
-            var result = (from p in data.UsersCommunity
-                          from c in data.Users
-                          from u in data.Communities
-                          where c.UserID== getID && u.CommunityID==p.CommunityID && c.UserID==p.UserID
-                          select new
-                          {
-                              u.CommunityName,
-                              u.CommunityID
-                          }).ToList();
+            if (!IsPostBack)
+            {
 
-            drp_community.DataSource = result; 
-            drp_community.DataTextField = "CommunityName";
-            drp_community.DataValueField = "CommunityID";
-            drp_community.DataBind();
-            //drp_community
+                int getID = Convert.ToInt32(value: Session["UserID"]);
+                DataAccess.ForumPartyEntities1 data = new DataAccess.ForumPartyEntities1();
+                var result = (from p in data.UsersCommunity
+                              from c in data.Users
+                              from u in data.Communities
+                              where c.UserID == getID && u.CommunityID == p.CommunityID && c.UserID == p.UserID
+                              select new
+                              {
+                                  CommunityName = u.CommunityName,
+                                  CommunityID = u.CommunityID
+                              }).ToList();
+
+                drp_community.DataSource = result;
+                drp_community.DataTextField = "CommunityName";
+                drp_community.DataValueField = "CommunityID";
+                drp_community.DataBind();
+            }
         }
 
         protected void Unnamed2_Click(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace Party.Web
                 HttpPostedFile postedFile = imageUpload.PostedFile;
                 if (imageUpload.HasFile)
                 {
-                    
+
                     string fileName = Path.GetFileName(postedFile.FileName);
                     string fileExt = Path.GetExtension(fileName);
                     if (fileExt.ToLower() == ".jpg" || fileExt.ToLower() == ".bpmp" ||
@@ -75,14 +78,14 @@ namespace Party.Web
                             Description = txt_description.Text.ToString(),
                             PrivacyID = privacyID,
                             UploadDate = DateTime.Today.ToShortDateString(),
-                            PostImage= bytes,
-                            Like=0,
-                            CommunityID = Convert.ToInt32(drp_community.SelectedValue.ToString())
+                            PostImage = bytes,
+                            Like = 0,
+                            CommunityID = Convert.ToInt32(drp_community.SelectedItem.Value.ToString())
                         };
 
                         repo.Insert(post);
 
-                        Response.Redirect("/Profile/"+Session["UserName"].ToString());
+                        Response.Redirect("/Profile/" + Session["UserName"].ToString());
 
                     }
                     else

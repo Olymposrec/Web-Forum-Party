@@ -12,6 +12,9 @@ namespace Party.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int userPerm = Convert.ToInt32(Session["UserID"].ToString());
+            int commIDValue = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+
             if (Session["UserName"] == null)
             {
                 Response.Redirect("/LogInPage");
@@ -20,22 +23,18 @@ namespace Party.Web
             {
                 string profileOwner = Session["UserName"].ToString();
                 string commNameValue = RouteData.Values["CommunityName"].ToString();
-                int commIDValue = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
                 if (!IsPostBack)
                 {
-
-
-                    string user = Session["UserName"].ToString();
                     DataAccess.ForumPartyEntities1 data = new DataAccess.ForumPartyEntities1();
 
                     var res = (from p in data.Posts
-                               where p.Communities.CommunityID == commIDValue && p.Communities.CommunityName== commNameValue
+                               where p.Communities.CommunityID == commIDValue && p.Communities.CommunityName == commNameValue
                                select new
                                {
                                    Title = p.Title,
                                    Description = p.Description,
                                    UploadDate = p.UploadDate,
-                                   UserID = p.UserID,
+                                   UserID = p.Users.UserName,
                                    PostImage = p.PostImage,
                                    Like = p.Like,
                                    CommunityName = p.Communities.CommunityName,
@@ -46,12 +45,10 @@ namespace Party.Web
                     Repeater1.DataSource = res;
                     Repeater1.DataBind();
 
-
-
                     DataAccess.ForumPartyEntities1 data2 = new DataAccess.ForumPartyEntities1();
                     var result2 = (
                                    from a in data2.Communities
-                                   where a.CommunityName == commNameValue && a.CommunityID==commIDValue
+                                   where a.CommunityName == commNameValue && a.CommunityID == commIDValue
                                    select new
                                    {
                                        ProfilImage = a.CommunityImage,
@@ -64,123 +61,121 @@ namespace Party.Web
                     DataList1.DataBind();
                 }
 
-
-                //if (!IsPostBack)
-                //{
-                   
-
-                //    DataAccess.ForumPartyEntities1 guestData = new DataAccess.ForumPartyEntities1();
-
-                //    var result = (from p in guestData.Posts
-                //                  from u in guestData.Users
-                //                  where p.Communities.CommunityID == commNameValue && p.Communities.CommunityName == commIDValue && p.PrivacyID != 1
-                //                  select new
-                //                  {
-                //                      Title = p.Title,
-                //                      Description = p.Description,
-                //                      UploadDate = p.UploadDate,
-                //                      UserID = u.UserName,
-                //                      PostImage = p.PostImage,
-                //                      Like = p.Like,
-                //                      PostID = p.PostID
-                //                  }).OrderBy(x => x.UploadDate).ToList();
-
-                //    Repeater1.DataSource = result;
-                //    Repeater1.DataBind();
-
-                //    DataAccess.ForumPartyEntities1 data3 = new DataAccess.ForumPartyEntities1();
-                //    var result3 = (from a in data3.Communities
-                //                   from d in data3.UsersCommunity
-                //                   where a.CommunityName == commNameValue
-                //                   select new
-                //                   {
-                //                       ProfilImage = a.CommunityImage,
-                //                       CommunityName = a.CommunityName,
-                //                       Members = a.MembersCount,
-                //                       AboutMe = a.Description
-                //                   }).ToList();
-
-                //    DataList1.DataSource = result3;
-                //    DataList1.DataBind();
-                //}
-
             }
         }
         protected void lbl_upvote_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] != null)
-            //{
-            //    RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            //    Label post = (Label)item.FindControl("Label1") as Label;
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int postID = int.Parse(post.Text.ToString());
-            //    var result = data.Find(x => x.PostID == postID);
-            //    result.Like++;
-            //    data.Update(result);
-            //}
-            //else
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label5") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text.ToString());
+                var result = data.Find(x => x.PostID == postID);
+                result.Like++;
+                data.Update(result);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
 
 
         }
         protected void btn_join_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] != null)
-            //{
-            //    RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            //    Label post = (Label)item.FindControl("Label1") as Label;
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int postID = int.Parse(post.Text.ToString());
-            //    var result = data.Find(x => x.PostID == postID);
-            //    result.Like++;
-            //    data.Update(result);
-            //}
-            //else
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
+
+            if (Session["UserName"] != null)
+            {
+                int userPerm = Convert.ToInt32(Session["UserID"].ToString());
+                int commIDValue = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+                DataAccess.ForumPartyEntities1 perm = new DataAccess.ForumPartyEntities1();
+                var permResult = (from p in perm.UsersCommunity
+                                  where p.UserID == userPerm && p.CommunityID == commIDValue
+                                  select new
+                                  {
+                                      CommunityStateID = p.CommunityStateID
+                                  }).FirstOrDefault();
+                if (permResult == null)
+                {
+                    int commID = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+                    Repository<DataAccess.Communities> data = new Repository<DataAccess.Communities>();
+
+                    var result = data.Find(x => x.CommunityID == commID);
+                    result.MembersCount++;
+                    data.Update(result);
+
+                    Repository<DataAccess.UsersCommunity> repo = new Repository<DataAccess.UsersCommunity>();
+                    int UserID = Convert.ToInt32(Session["UserID"].ToString());
+                    DataAccess.UsersCommunity newUserComm = new DataAccess.UsersCommunity
+                    {
+                        CommunityID = commID,
+                        UserID = UserID,
+                        CommunityStateID=2
+                    };
+                    repo.Insert(newUserComm);
+                    
+                }
+                else
+                {
+                    int commID = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+                    Repository<DataAccess.Communities> data = new Repository<DataAccess.Communities>();
+
+                    var result = data.Find(x => x.CommunityID == commID);
+                    result.MembersCount--;
+                    data.Update(result);
+
+                    int UserID = Convert.ToInt32(Session["UserID"].ToString());
+                    Repository<DataAccess.UsersCommunity> repo = new Repository<DataAccess.UsersCommunity>();
+                    var resul2 = repo.Find(x => x.CommunityID == commID && x.UserID == UserID);
+                    repo.Delete(resul2);
+                }
+               
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
 
 
         }
         protected void lb_Comment_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] == null)
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
-            //else
-            //{
-            //    //RepeaterItem item = (sender as Repeater).Parent as RepeaterItem;
-            //    RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
-            //    Label post = (Label)item.FindControl("Label1") as Label;
-            //    LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int postID = int.Parse(post.Text);
-            //    string userName = user.Text;
-            //    Session["ClickedPostID"] = postID;
-            //    Response.Redirect("/PostDetail/" + postID + "/" + userName);
-            //}
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("/LogInPage");
+            }
+            else
+            {
+
+                RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+                Label post = (Label)item.FindControl("Label5") as Label;
+                LinkButton user = (LinkButton)item.FindControl("LinkButton1");
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                string userName = user.Text;
+                Session["ClickedPostID"] = postID;
+                Response.Redirect("/PostDetail/" + postID + "/" + userName);
+            }
 
         }
 
         protected void lbl_downvote_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] != null)
-            //{
-            //    RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            //    Label post = (Label)item.FindControl("Label1") as Label;
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int postID = int.Parse(post.Text);
-            //    var result = data.Find(x => x.PostID == postID);
-            //    result.Like--;
-            //    data.Update(result);
-            //}
-            //else
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label5") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text.ToString());
+                var result = data.Find(x => x.PostID == postID);
+                result.Like--;
+                data.Update(result);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
 
         }
 
@@ -188,22 +183,21 @@ namespace Party.Web
 
         protected void lb_Detail_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] == null)
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
-            //else
-            //{
-            //    //RepeaterItem item = (sender as Repeater).Parent as RepeaterItem;
-            //    RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
-            //    Label post = (Label)item.FindControl("Label1") as Label;
-            //    LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int postID = int.Parse(post.Text);
-            //    string userName = user.Text;
-            //    Session["ClickedPostID"] = postID;
-            //    Response.Redirect("/PostDetail/" + postID + "/" + userName);
-            //}
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("/LogInPage");
+            }
+            else
+            {
+                RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+                Label post = (Label)item.FindControl("Label5") as Label;
+                LinkButton user = (LinkButton)item.FindControl("LinkButton1");
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                string userName = user.Text;
+                Session["ClickedPostID"] = postID;
+                Response.Redirect("/PostDetail/" + postID + "/" + userName);
+            }
 
         }
 
@@ -231,21 +225,18 @@ namespace Party.Web
 
         protected void community_Linkbtn_Click(object sender, EventArgs e)
         {
-            //if (Session["UserName"] != null)
-            //{
-
-            //    RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            //    Label userIDLabel = (Label)item.FindControl("Label2") as Label;
-            //    LinkButton user = (LinkButton)item.FindControl("lb_UserProfile");
-            //    Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
-            //    int UserID = int.Parse(userIDLabel.Text.ToString());
-            //    string userName = user.Text;
-            //    Response.Redirect("/Profile/" + CommunityName + "/" + userName);
-            //}
-            //else
-            //{
-            //    Response.Redirect("/LogInPage");
-            //}
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                LinkButton commName = (LinkButton)item.FindControl("community_Linkbtn");
+                int commId = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+                string commNameRes = commName.Text;
+                Response.Redirect("/Community/" + commId + "/" + commNameRes);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
 
 
         }
@@ -262,7 +253,49 @@ namespace Party.Web
 
         protected void DataList1_ItemCreated(object sender, DataListItemEventArgs e)
         {
-
+            int userPerm = Convert.ToInt32(Session["UserID"].ToString());
+            int commIDValue = Convert.ToInt32(RouteData.Values["CommunityID"].ToString());
+            DataAccess.ForumPartyEntities1 perm = new DataAccess.ForumPartyEntities1();
+            var permResult = (from p in perm.UsersCommunity
+                              where p.UserID == userPerm && p.CommunityID == commIDValue
+                              select new
+                              {
+                                  CommunityStateID = p.CommunityStateID
+                              }).FirstOrDefault();
+            Button btn_join = (Button)e.Item.FindControl("btn_Join");
+            Button btn_edit = (Button)e.Item.FindControl("btn_editProfil");
+            Button btn_delete = (Button)e.Item.FindControl("btn_delete");
+            if (permResult != null)
+            {
+                int userPrmRes = int.Parse(permResult.CommunityStateID.ToString());
+                if (userPrmRes == 2)
+                {
+                    btn_edit.Visible = false;
+                    btn_delete.Visible = false;
+                    btn_join.Text = "Joined";
+                }
+                else if (userPrmRes == 1)
+                {
+                    btn_edit.Visible = true;
+                    btn_delete.Visible = true;
+                    btn_join.Text = "Founder";
+                    btn_join.Enabled = false;
+                }
+                else if (userPrmRes == 3)
+                {
+                    btn_edit.Visible = true;
+                    btn_delete.Visible = false;
+                    btn_join.Text = "Manager";
+                    btn_join.Enabled = true;
+                }
+            }
+            else
+            {
+                btn_edit.Visible = false;
+                btn_delete.Visible = false;
+                btn_join.Text = "Join";
+                btn_join.Enabled = true;
+            }
         }
 
         protected void delete_PostLink_Click(object sender, EventArgs e)
@@ -276,6 +309,11 @@ namespace Party.Web
         }
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
+
+        protected void btn_delete_Click(object sender, EventArgs e)
         {
 
         }
