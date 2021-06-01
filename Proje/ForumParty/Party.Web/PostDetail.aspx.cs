@@ -26,7 +26,8 @@ namespace Party.Web
                               Title = p.Title,
                               Description = p.Description,
                               UploadDate = p.UploadDate,
-                              UserID = u.UserName,
+                              UserID = u.UserID,
+                              UserName=u.UserName,
                               PostImage = p.PostImage,
                               postID=p.PostID,
                               Like = p.Like
@@ -63,7 +64,7 @@ namespace Party.Web
         {
 
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            Label post = (Label)item.FindControl("Label1") as Label;
+            Label post = (Label)item.FindControl("Label1");
             Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
             int postID = int.Parse(post.Text);
             var result = data.Find(x => x.PostID == postID);
@@ -75,7 +76,7 @@ namespace Party.Web
         protected void lbl_downvote_Click(object sender, EventArgs e)
         {
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            Label post = (Label)item.FindControl("Label1") as Label;
+            Label post = (Label)item.FindControl("Label1");
             Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
             int postID = int.Parse(post.Text);
             var result = data.Find(x => x.PostID == postID);
@@ -102,6 +103,25 @@ namespace Party.Web
             string userName = RouteData.Values["UserName"].ToString();
                 Session["ClickedPostID"] = postID;
             Response.Redirect("/PostDetail/" + postID + "/" + userName);
+        }
+
+        protected void lb_routeProfile_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] != null)
+            {
+
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label userIDLabel = (Label)item.FindControl("Label2");
+                LinkButton user = (LinkButton)item.FindControl("lb_routeProfile");
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int UserID = int.Parse(userIDLabel.Text.ToString());
+                string userName = user.Text;
+                Response.Redirect("/Profile/" + UserID + "/" + userName);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
         }
     }
 }

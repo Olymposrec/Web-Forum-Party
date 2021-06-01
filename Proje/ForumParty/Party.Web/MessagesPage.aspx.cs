@@ -18,5 +18,10 @@ namespace Party.Web
             }
 
         }
+
+        protected void btn_send_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

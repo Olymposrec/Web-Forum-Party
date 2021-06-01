@@ -18,7 +18,6 @@ namespace Party.DataAccess
         public Categories()
         {
             this.Posts = new HashSet<Posts>();
-            this.Surveys = new HashSet<Surveys>();
         }
     
         public int CategoryID { get; set; }
@@ -27,7 +26,5 @@ namespace Party.DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Posts> Posts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Surveys> Surveys { get; set; }
     }
 }

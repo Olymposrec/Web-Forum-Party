@@ -18,6 +18,7 @@
     <EntitySetMapping Name="Adress">
       <EntityTypeMapping TypeName="ForumPartyModel.Adress">
         <MappingFragment StoreEntitySet="Adress">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="AdressID" ColumnName="AdressID" />
           <ScalarProperty Name="Road" ColumnName="Road" />
           <ScalarProperty Name="Street" ColumnName="Street" />
@@ -78,39 +79,6 @@
         <MappingFragment StoreEntitySet="PrivacyStatement">
           <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
           <ScalarProperty Name="PrivacyState" ColumnName="PrivacyState" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Questions">
-      <EntityTypeMapping TypeName="ForumPartyModel.Questions">
-        <MappingFragment StoreEntitySet="Questions">
-          <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
-          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
-          <ScalarProperty Name="QuestDescript" ColumnName="QuestDescript" />
-          <ScalarProperty Name="Option1" ColumnName="Option1" />
-          <ScalarProperty Name="Option2" ColumnName="Option2" />
-          <ScalarProperty Name="Option3" ColumnName="Option3" />
-          <ScalarProperty Name="Option4" ColumnName="Option4" />
-          <ScalarProperty Name="Option5" ColumnName="Option5" />
-          <ScalarProperty Name="Option6" ColumnName="Option6" />
-          <ScalarProperty Name="Option7" ColumnName="Option7" />
-          <ScalarProperty Name="Option8" ColumnName="Option8" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Surveys">
-      <EntityTypeMapping TypeName="ForumPartyModel.Surveys">
-        <MappingFragment StoreEntitySet="Surveys">
-          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="PrivacyID" ColumnName="PrivacyID" />
-          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
-          <ScalarProperty Name="Like" ColumnName="Like" />
-          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-          <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

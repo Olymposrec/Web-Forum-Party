@@ -68,12 +68,13 @@ namespace Party.Web
             if (Session["UserName"] != null)
             {
                 RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-                Label post = (Label)item.FindControl("Label5") as Label;
+                Label post = (Label)item.FindControl("Label5");
                 Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
                 int postID = int.Parse(post.Text.ToString());
                 var result = data.Find(x => x.PostID == postID);
                 result.Like++;
                 data.Update(result);
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
@@ -84,7 +85,7 @@ namespace Party.Web
         }
         protected void btn_join_Click(object sender, EventArgs e)
         {
-
+            string commNameValue = RouteData.Values["CommunityName"].ToString();
             if (Session["UserName"] != null)
             {
                 int userPerm = Convert.ToInt32(Session["UserID"].ToString());
@@ -114,7 +115,8 @@ namespace Party.Web
                         CommunityStateID=2
                     };
                     repo.Insert(newUserComm);
-                    
+
+                    Response.Redirect("/Community/" + commIDValue + "/" + commNameValue);
                 }
                 else
                 {
@@ -129,6 +131,7 @@ namespace Party.Web
                     Repository<DataAccess.UsersCommunity> repo = new Repository<DataAccess.UsersCommunity>();
                     var resul2 = repo.Find(x => x.CommunityID == commID && x.UserID == UserID);
                     repo.Delete(resul2);
+                    Response.Redirect("/Community/" + commIDValue + "/" + commNameValue);
                 }
                
             }
@@ -171,6 +174,7 @@ namespace Party.Web
                 var result = data.Find(x => x.PostID == postID);
                 result.Like--;
                 data.Update(result);
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
@@ -310,11 +314,32 @@ namespace Party.Web
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            string userPerm = Session["UserName"].ToString();
+            LinkButton postUser = e.Item.FindControl("LinkButton1") as LinkButton;
 
+            string postUserName = postUser.Text.ToString();
+
+            if (userPerm == postUserName)
+            {
+
+                LinkButton btn_delete = (LinkButton)e.Item.FindControl("delete_PostLink");
+                btn_delete.Visible = true;
+            }
+            else
+            {
+                LinkButton btn_delete = (LinkButton)e.Item.FindControl("delete_PostLink");
+                btn_delete.Visible = false;
+            }
         }
 
         protected void btn_delete_Click(object sender, EventArgs e)
         {
+
+        }
+
+        protected void Repeater1_ItemCreated(object sender, RepeaterItemEventArgs e)
+        {
+            
 
         }
     }

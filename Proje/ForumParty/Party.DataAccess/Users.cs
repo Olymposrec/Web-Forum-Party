@@ -19,11 +19,11 @@ namespace Party.DataAccess
         {
             this.AboutUsers = new HashSet<AboutUsers>();
             this.Posts = new HashSet<Posts>();
-            this.Surveys = new HashSet<Surveys>();
             this.UsersCommunity = new HashSet<UsersCommunity>();
             this.UserFollowers = new HashSet<UserFollowers>();
             this.UserFollowers1 = new HashSet<UserFollowers>();
             this.PostCommnets = new HashSet<PostCommnets>();
+            this.Adress = new HashSet<Adress>();
         }
     
         public int UserID { get; set; }
@@ -36,8 +36,6 @@ namespace Party.DataAccess
         public virtual ICollection<AboutUsers> AboutUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Posts> Posts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Surveys> Surveys { get; set; }
         public virtual UsersState UsersState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersCommunity> UsersCommunity { get; set; }
@@ -47,5 +45,7 @@ namespace Party.DataAccess
         public virtual ICollection<UserFollowers> UserFollowers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostCommnets> PostCommnets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Adress> Adress { get; set; }
     }
 }

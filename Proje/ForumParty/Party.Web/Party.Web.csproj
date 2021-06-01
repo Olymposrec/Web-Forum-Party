@@ -165,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUser.aspx" />
-    <Content Include="AddPollPage.aspx" />
     <Content Include="AddPostPage.aspx" />
     <None Include="Connected Services\ServiceReference1\ASMXTest.wsdl" />
     <Content Include="CommunityPage.aspx" />
@@ -207,6 +206,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="EditCommunity.aspx" />
     <Content Include="DataTest.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="font\bootstrap-icons.css" />
@@ -1539,7 +1539,7 @@
     <Content Include="icons\zoom-out.svg" />
     <Content Include="LogInPage.aspx" />
     <Content Include="MessagesPage.aspx" />
-    <Content Include="PollsPage.aspx" />
+    <Content Include="Communities.aspx" />
     <Content Include="PostDetail.aspx" />
     <Content Include="ProfilPage.aspx" />
     <Content Include="Resource\css\blog-home.css" />
@@ -1569,6 +1569,7 @@
     <Content Include="Resource\jquery\jquery.min.js" />
     <Content Include="Resource\jquery\jquery.slim.js" />
     <Content Include="Resource\jquery\jquery.slim.min.js" />
+    <Content Include="Resource\js\MessagePage.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1690,13 +1691,6 @@
     <Compile Include="AboutUser.aspx.designer.cs">
       <DependentUpon>AboutUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddPollPage.aspx.cs">
-      <DependentUpon>AddPollPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddPollPage.aspx.designer.cs">
-      <DependentUpon>AddPollPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AddPostPage.aspx.cs">
       <DependentUpon>AddPostPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1720,6 +1714,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EditCommunity.aspx.cs">
+      <DependentUpon>EditCommunity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditCommunity.aspx.designer.cs">
+      <DependentUpon>EditCommunity.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataTest.aspx.cs">
       <DependentUpon>DataTest.aspx</DependentUpon>
@@ -1749,12 +1750,12 @@
     <Compile Include="MessagesPage.aspx.designer.cs">
       <DependentUpon>MessagesPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PollsPage.aspx.cs">
-      <DependentUpon>PollsPage.aspx</DependentUpon>
+    <Compile Include="Communities.aspx.cs">
+      <DependentUpon>Communities.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PollsPage.aspx.designer.cs">
-      <DependentUpon>PollsPage.aspx</DependentUpon>
+    <Compile Include="Communities.aspx.designer.cs">
+      <DependentUpon>Communities.aspx</DependentUpon>
     </Compile>
     <Compile Include="PostDetail.aspx.cs">
       <DependentUpon>PostDetail.aspx</DependentUpon>

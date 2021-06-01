@@ -34,8 +34,6 @@ namespace Party.DataAccess
         public virtual DbSet<CommunityPermissions> CommunityPermissions { get; set; }
         public virtual DbSet<Posts> Posts { get; set; }
         public virtual DbSet<PrivacyStatement> PrivacyStatement { get; set; }
-        public virtual DbSet<Questions> Questions { get; set; }
-        public virtual DbSet<Surveys> Surveys { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersState> UsersState { get; set; }

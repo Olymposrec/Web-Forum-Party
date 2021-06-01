@@ -99,9 +99,6 @@
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Questions.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
-    </Compile>
     <Compile Include="spGetPosts_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
@@ -109,9 +106,6 @@
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Surveys.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">

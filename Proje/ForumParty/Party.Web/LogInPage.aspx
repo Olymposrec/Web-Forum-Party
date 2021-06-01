@@ -31,7 +31,7 @@
 							<p class="text-center"><a href="#" class="btn">Forgot password?</a></p>
 				</div>
   </div>
-
+<br />
 	    <div class="card  text-center">
 				
 				<div class="card-body">
@@ -81,4 +81,5 @@
 				</div>
   </div>
 					</form>
+	<br />
 </asp:Content>

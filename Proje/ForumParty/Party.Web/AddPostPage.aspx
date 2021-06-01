@@ -11,7 +11,7 @@
           <i class="bi bi-archive-fill"></i>
         </div>
       </div> 
-        <asp:TextBox ID="txt_title" runat="server" placeholder="Post Title" type="text" required="required" class="form-control"></asp:TextBox>
+        <asp:TextBox ID="txt_title" runat="server" placeholder="Post Title" type="text" required="required" class="form-control" MaxLength="50"></asp:TextBox>
     </div>
   </div>
       <div class="form-control-file">

@@ -28,6 +28,8 @@
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="AboutUsers" Relationship="Self.FK_AboutUsers_Adress" FromRole="Adress" ToRole="AboutUsers" />
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Users" Relationship="ForumPartyModel.FK_Adress_Users" FromRole="Adress" ToRole="Users" />
   </EntityType>
   <EntityType Name="Categories">
     <Key>
@@ -36,7 +38,6 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categories" FromRole="Categories" ToRole="Posts" />
-    <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Categories" FromRole="Categories" ToRole="Surveys" />
     <Property Name="CategoryImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="Communities">
@@ -86,43 +87,6 @@
     <Property Name="PrivacyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PrivacyState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_PrivacyStatement" FromRole="PrivacyStatement" ToRole="Posts" />
-    <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_PrivacyStatement" FromRole="PrivacyStatement" ToRole="Surveys" />
-  </EntityType>
-  <EntityType Name="Questions">
-    <Key>
-      <PropertyRef Name="QuestionsID" />
-    </Key>
-    <Property Name="QuestionsID" Type="Int32" Nullable="false" />
-    <Property Name="SurveyID" Type="Int32" />
-    <Property Name="QuestDescript" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Option8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Surveys" Relationship="Self.FK_Questions_Surveys" FromRole="Questions" ToRole="Surveys" />
-  </EntityType>
-  <EntityType Name="Surveys">
-    <Key>
-      <PropertyRef Name="SurveyID" />
-    </Key>
-    <Property Name="SurveyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserID" Type="Int32" />
-    <Property Name="CategoryID" Type="Int32" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="PrivacyID" Type="Int32" />
-    <Property Name="UploadDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Like" Type="Int32" />
-    <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="QuestionsID" Type="Int32" />
-    <NavigationProperty Name="Categories" Relationship="Self.FK_Surveys_Categories" FromRole="Surveys" ToRole="Categories" />
-    <NavigationProperty Name="PrivacyStatement" Relationship="Self.FK_Surveys_PrivacyStatement" FromRole="Surveys" ToRole="PrivacyStatement" />
-    <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Surveys" FromRole="Surveys" ToRole="Questions" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Surveys_Users" FromRole="Surveys" ToRole="Users" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -145,12 +109,12 @@
     <Property Name="UsersStateID" Type="Int32" />
     <NavigationProperty Name="AboutUsers" Relationship="Self.FK_AboutUsers_Users" FromRole="Users" ToRole="AboutUsers" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Users" FromRole="Users" ToRole="Posts" />
-    <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Users" FromRole="Users" ToRole="Surveys" />
     <NavigationProperty Name="UsersState" Relationship="Self.FK_Users_UsersState" FromRole="Users" ToRole="UsersState" />
     <NavigationProperty Name="UsersCommunity" Relationship="ForumPartyModel.FK_UsersCommunity_Users" FromRole="Users" ToRole="UsersCommunity" />
     <NavigationProperty Name="UserFollowers" Relationship="ForumPartyModel.FK_UserFollowers_UserFollowers" FromRole="Users" ToRole="UserFollowers" />
     <NavigationProperty Name="UserFollowers1" Relationship="ForumPartyModel.FK_UserFollowers_Users" FromRole="Users" ToRole="UserFollowers" />
     <NavigationProperty Name="PostCommnets" Relationship="ForumPartyModel.FK_PostCommnets_Users" FromRole="Users" ToRole="PostCommnets" />
+    <NavigationProperty Name="Adress" Relationship="ForumPartyModel.FK_Adress_Users" FromRole="Users" ToRole="Adress" />
   </EntityType>
   <EntityType Name="UsersState">
     <Key>
@@ -192,18 +156,6 @@
         <PropertyRef Name="CategoryID" />
       </Principal>
       <Dependent Role="Posts">
-        <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Surveys_Categories">
-    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
-    <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categories">
-        <PropertyRef Name="CategoryID" />
-      </Principal>
-      <Dependent Role="Surveys">
         <PropertyRef Name="CategoryID" />
       </Dependent>
     </ReferentialConstraint>
@@ -256,42 +208,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Surveys_PrivacyStatement">
-    <End Role="PrivacyStatement" Type="Self.PrivacyStatement" Multiplicity="0..1" />
-    <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PrivacyStatement">
-        <PropertyRef Name="PrivacyID" />
-      </Principal>
-      <Dependent Role="Surveys">
-        <PropertyRef Name="PrivacyID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Questions_Surveys">
-    <End Role="Surveys" Type="Self.Surveys" Multiplicity="0..1" />
-    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Surveys">
-        <PropertyRef Name="SurveyID" />
-      </Principal>
-      <Dependent Role="Questions">
-        <PropertyRef Name="SurveyID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Surveys_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Surveys">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Users_UsersState">
     <End Role="UsersState" Type="Self.UsersState" Multiplicity="0..1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -312,8 +228,6 @@
     <EntitySet Name="CommunityPermissions" EntityType="Self.CommunityPermissions" />
     <EntitySet Name="Posts" EntityType="Self.Posts" />
     <EntitySet Name="PrivacyStatement" EntityType="Self.PrivacyStatement" />
-    <EntitySet Name="Questions" EntityType="Self.Questions" />
-    <EntitySet Name="Surveys" EntityType="Self.Surveys" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <EntitySet Name="UsersState" EntityType="Self.UsersState" />
@@ -328,10 +242,6 @@
     <AssociationSet Name="FK_Posts_Categories" Association="Self.FK_Posts_Categories">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Surveys_Categories" Association="Self.FK_Surveys_Categories">
-      <End Role="Categories" EntitySet="Categories" />
-      <End Role="Surveys" EntitySet="Surveys" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Communities" Association="Self.FK_Posts_Communities">
       <End Role="Communities" EntitySet="Communities" />
@@ -348,18 +258,6 @@
     <AssociationSet Name="FK_Posts_Users" Association="Self.FK_Posts_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Surveys_PrivacyStatement" Association="Self.FK_Surveys_PrivacyStatement">
-      <End Role="PrivacyStatement" EntitySet="PrivacyStatement" />
-      <End Role="Surveys" EntitySet="Surveys" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Questions_Surveys" Association="Self.FK_Questions_Surveys">
-      <End Role="Surveys" EntitySet="Surveys" />
-      <End Role="Questions" EntitySet="Questions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Surveys_Users" Association="Self.FK_Surveys_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Surveys" EntitySet="Surveys" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_UsersState" Association="Self.FK_Users_UsersState">
       <End Role="UsersState" EntitySet="UsersState" />
@@ -429,6 +327,10 @@
     <AssociationSet Name="FK_UsersCommunity_CommunityPermissions" Association="ForumPartyModel.FK_UsersCommunity_CommunityPermissions">
       <End Role="CommunityPermissions" EntitySet="CommunityPermissions" />
       <End Role="UsersCommunity" EntitySet="UsersCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adress_Users" Association="ForumPartyModel.FK_Adress_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Adress" EntitySet="Adress" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UsersCommunity">
@@ -570,6 +472,18 @@
       </Principal>
       <Dependent Role="UsersCommunity">
         <PropertyRef Name="CommunityStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adress_Users">
+    <End Type="ForumPartyModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="ForumPartyModel.Adress" Role="Adress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Adress">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -54,6 +54,16 @@ namespace Party.Web
             route.MapPageRoute("MessagePage", "Messages/{UserName}", "~/MessagesPage.aspx");
         }
 
+        void RouteEditCommunityPage(RouteCollection route)
+        {
+            route.MapPageRoute("EditCommunity", "EditCommunity", "~/EditCommunity.aspx");
+        }
+
+        void RouteComminities(RouteCollection route)
+        {
+            route.MapPageRoute("Communities", "Communities", "~/Communities.aspx");
+        }
+
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -76,6 +86,10 @@ namespace Party.Web
             RouteMessagePage(RouteTable.Routes);
 
             RouteCommunityProfile(RouteTable.Routes);
+
+            RouteEditCommunityPage(RouteTable.Routes);
+
+            RouteComminities(RouteTable.Routes);
 
         }
 

@@ -18,8 +18,9 @@
                               </h2>
                               <h6 class="align-content-sm-end"> 
                                   <div class="row">
+                                      <asp:Label ID="Label2" runat="server" Text='<%#Eval("UserID")%>' Visible="false"> </asp:Label>
                                         <asp:Label ID="Label1" runat="server" Text='<%#Eval("PostID")%>' Visible="false"> </asp:Label>
-                                           <i class="bi bi-person-fill" type="button"></i> <div class="col-md-4"><asp:LinkButton ID="LinkButton1" runat="server" class="text-left"> <%#Eval("UserID") %></asp:LinkButton></div>
+                                           <i class="bi bi-person-fill" type="button"></i><div class="col-md-4"><asp:LinkButton ID="lb_routeProfile" runat="server" OnClick="lb_routeProfile_Click" class="text-left"><%#Eval("UserName") %></asp:LinkButton></div>
                                             <div class="col-md-4 ml-auto text-right"> <asp:Label ID="lbl_date" runat="server" ><i class="bi bi-clock-fill"></i> <%#Eval("UploadDate")%></asp:Label></div>
                                     
                                   </div>

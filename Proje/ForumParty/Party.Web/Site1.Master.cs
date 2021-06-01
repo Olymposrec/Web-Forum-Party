@@ -20,13 +20,21 @@ namespace Party.Web
                 Repeater1.DataBind();
 
                 Repository<DataAccess.Communities> repoCommWeekly = new Repository<DataAccess.Communities>();
-                DataAccess.Communities weeklyComm = new DataAccess.Communities()
-                {
+                DataAccess.ForumPartyEntities1 weeklyComm = new DataAccess.ForumPartyEntities1();
+                var res = (from c in weeklyComm.Communities
+                           select new
+                           {
+                               CommunityNameTrend = c.CommunityName,
+                               CommunityID = c.CommunityID,
+                               Members = c.MembersCount
+                           }
+                           ).OrderByDescending(x => x.Members).Take(5).ToList();
 
-                };
+                Repeater2_TrendComm.DataSource = res;
+                Repeater2_TrendComm.DataBind();
             }
 
-            
+
 
 
             if (Session["UserName"] != null)
@@ -45,7 +53,7 @@ namespace Party.Web
                 btn_login.Visible = true;
                 lbl_session.Text = "";
             }
-            
+
         }
         protected void Login_Click(object sender, EventArgs e)
         {
@@ -54,7 +62,7 @@ namespace Party.Web
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-           
+
             Session.RemoveAll();
             lbl_session.Text = "";
             Response.Redirect("/LogInPage");
@@ -79,9 +87,9 @@ namespace Party.Web
             {
                 Response.Redirect("/AddPost");
             }
-           
+
         }
-        protected void AddPoll_Click(object sender, EventArgs e)
+        protected void CreateCommunity_Click(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
             {
@@ -89,11 +97,11 @@ namespace Party.Web
             }
             else
             {
-                Response.Redirect("AddPollPage.aspx");
+                Response.Redirect("/EditCommunity");
             }
-           
+
         }
-        
+
         protected void ForumPage_Click(object sender, EventArgs e)
         {
 
@@ -102,10 +110,10 @@ namespace Party.Web
         }
         protected void PollsPage_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PollsPage.aspx");
+            Response.Redirect("/Communities");
 
         }
-        
+
         protected void MessagesPage_Click(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
@@ -116,7 +124,7 @@ namespace Party.Web
             {
                 Response.Redirect("/Messages/" + Session["UserName"].ToString());
             }
-           
+
 
         }
         protected void HomePage_Click(object sender, EventArgs e)
@@ -124,7 +132,7 @@ namespace Party.Web
             Response.Redirect("/HomePage");
 
         }
-        
+
         protected void ProfilePage_Click(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
@@ -133,22 +141,40 @@ namespace Party.Web
             }
             else
             {
-                Response.Redirect("/Profile/"+ Session["UserName"].ToString());
+                Response.Redirect("/Profile/" + Session["UserName"].ToString());
             }
 
         }
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-           
+
         }
 
         protected void lb_category_Click(object sender, EventArgs e)
         {
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            LinkButton categoryName = (LinkButton)item.FindControl("lb_category") as LinkButton;
+            Label categoryName = (Label)item.FindControl("Label2");
             string category = categoryName.Text;
             Response.Redirect("/HomePage/" + category);
 
         }
+
+        protected void lb_Community_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("/LogInPage");
+            }
+            else
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label communityIDIndex = (Label)item.FindControl("Label1");
+                Label communityNameIndex = (Label)item.FindControl("lbl_trendCommunity");
+                string communityName = communityNameIndex.Text.ToString();
+                int communityID = Convert.ToInt32(communityIDIndex.Text.ToString());
+                Response.Redirect("/Community/" + communityID + "/" + communityName);
+            }
+           
+        }
     }
-}
+}  

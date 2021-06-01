@@ -67,7 +67,8 @@ namespace Party.Web
                     Repository<Party.DataAccess.Communities> repo2 = new Repository<DataAccess.Communities>();
                     Repository<Party.DataAccess.UsersCommunity> repo3 = new Repository<DataAccess.UsersCommunity>();
                     Repository<Party.DataAccess.AboutUsers> repo4 = new Repository<DataAccess.AboutUsers>();
-                    
+                    Repository<Party.DataAccess.Adress> repo5 = new Repository<DataAccess.Adress>();
+
 
                     DataAccess.Users newUser = new DataAccess.Users
                     {
@@ -79,7 +80,8 @@ namespace Party.Web
 
                     DataAccess.Communities newCommunity = new DataAccess.Communities
                     {
-                        CommunityName = txt_usernameRegister.Text
+                        CommunityName = txt_usernameRegister.Text,
+                        MembersCount=1
                     };
 
                     
@@ -100,9 +102,16 @@ namespace Party.Web
                         DataAccess.UsersCommunity newUserComm = new DataAccess.UsersCommunity
                         {
                             CommunityID = newCommunity.CommunityID,
+                            CommunityStateID=1,
                             UserID = newUser.UserID
                         };
                         repo3.Insert(newUserComm);
+
+                        DataAccess.Adress newAdressUser = new DataAccess.Adress
+                        {
+                            UserID= newUser.UserID
+                        };
+                        repo5.Insert(newAdressUser);
 
                         DataAccess.AboutUsers newAboutUser = new DataAccess.AboutUsers
                         {
