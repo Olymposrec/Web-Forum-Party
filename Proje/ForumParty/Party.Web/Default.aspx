@@ -12,19 +12,26 @@
     <meta name="description" content="Party is a forum site where communities come together. "/>
     <meta name="author" content="Melih Akkose"/>
 
-    <!-- Icons-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <script src="~/Scripts/jquery.signalR-2.4.2.js"></script>
+     <script type="text/javascript" src='<%= ResolveClientUrl("~/signalr/hubs") %>'></script>
+
+    <link href="Resource/css/blog-home.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="Resource/jquery/jquery.min.js"></script>
-    <script src="Resource/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Bootstrap core CSS -->
-    <link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
-
-     <!-- Custom styles for this template -->
+   
+   
+    <script src="Scripts/date.format.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     
-    <link href="Resource/css/blog-home.css" rel="stylesheet" />
+    <link href="Resource/js/MessagePage.css" rel="stylesheet" />
+
+    <link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">

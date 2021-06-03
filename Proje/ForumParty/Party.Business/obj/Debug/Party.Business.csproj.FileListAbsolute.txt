@@ -39,3 +39,16 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\obj\Debug
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\obj\Debug\Party.Business.pdb
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Party.Web.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Party.Web.pdb
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.Security.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Newtonsoft.Json.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Owin.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Microsoft.Owin.Security.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.Business\bin\Debug\Newtonsoft.Json.xml

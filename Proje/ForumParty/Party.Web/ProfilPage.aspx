@@ -41,7 +41,7 @@
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
                             <ContentTemplate>
                                 <asp:Button ID="btn_follow" OnClick="btn_follow_Click" runat="server" Text="Follow" class="btn btn-primary " />
-                                <asp:Button ID="btn_chat" runat="server" Text="Chat" class="btn  btn-outline-primary" />
+                                <asp:Button ID="btn_chat" OnClick="btn_chat_Click" runat="server" Text="Chat" class="btn  btn-outline-primary" />
                                 <asp:Button ID="btn_editProfil" runat="server" Text="Edit Profile" OnClick="btn_editProfil_Click" class="btn btn-primary " />
                                 <asp:Button ID="btn_editCommunity" runat="server" Text="Edit Community" OnClick="btn_editCommunity_Click" class="btn btn-primary " />
                             </ContentTemplate>

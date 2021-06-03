@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hosting;
 
 namespace Party.Web
 {
@@ -51,9 +53,11 @@ namespace Party.Web
         }
         void RouteMessagePage(RouteCollection route)
         {
+            
             route.MapPageRoute("MessagePage", "Messages/{UserName}", "~/MessagesPage.aspx");
+           
         }
-
+       
         void RouteEditCommunityPage(RouteCollection route)
         {
             route.MapPageRoute("EditCommunity", "EditCommunity", "~/EditCommunity.aspx");
@@ -84,12 +88,15 @@ namespace Party.Web
             RouteUserDetail(RouteTable.Routes);
 
             RouteMessagePage(RouteTable.Routes);
+          
 
             RouteCommunityProfile(RouteTable.Routes);
 
             RouteEditCommunityPage(RouteTable.Routes);
 
             RouteComminities(RouteTable.Routes);
+
+            
 
         }
 

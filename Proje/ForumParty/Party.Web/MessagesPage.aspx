@@ -1,88 +1,94 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MessagesPage.aspx.cs" Inherits="Party.Web.MessagesPage" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <link href="Resource/js/MessagePage.css" rel="stylesheet" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  
-
-    
-<div class="container">
 
 
-    <!-- Content wrapper start -->
-    <div class="content-wrapper">
+    <script src=' <%=ResolveUrl("~/Scripts/jquery-3.6.0.min.js") %>'>  </script>
+    <script src=' <%=ResolveUrl("~/Scripts/jquery.signalR-2.4.2.js") %>'></script>
+    <script src=' <%=ResolveUrl("~/signalr/hubs") %>'> </script>
+    <script type="text/javascript">
 
-        <!-- Row start -->
-        <div class="row gutters">
+        $(function () {
+            // Declare a proxy to reference the hub.
+            var chat;
+            chat = $.connection.chatHub;
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            // Create a function that the hub can call to broadcast messages.
+            chat.client.broadcastMessage = function (name, message) {
+                // Html encode display name and message.
+                var encodedName = $('<div />').text(name).html();
+                var encodedMsg = $('<div />').text(message).html();
+                // Add the message to the page.
+                $('#discussion').append('<li><strong>' + encodedName
+                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+            };
+            // Get the user name and store it to prepend to messages.
+            var sessionName = $('#lb_UserName').val();
 
-                <div class="card m-0">
 
-                    <!-- Row start -->
-                    <div class="row no-gutters">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-                            <div class="users-container">
-                              
-                                <ul class="users">
-                                    <li class="person" data-chat="person1">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-                                            <span class="status offline"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-                            <div class="selected-user">
-                                <span>To: <span class="name">Emily Russell</span></span>
-                            </div>
-                            <div class="chat-container">
-                                <ul class="chat-box chatContainerScroll">
-                                    
-                                    <li class="chat-right">
-                                        
-                                        <div class="chat-text">Have you faced any problems at the last phase of the project?</div>
-                                        <div class="chat-avatar">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
-                                            <div class="chat-name">Jin</div>
-                                        </div>
-                                    </li>
-                                    <li class="chat-left">
-                                        <div class="chat-avatar">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
-                                        </div>
-                                        <div class="chat-text">Actually everything was fine.
-                                            <br>I'm very excited to show this to our team.</div>
-                                        
-                                    </li>
-                                </ul>
-                                <div class="form-group mt-3 mb-0">
-                                    <textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>
-                                    <asp:LinkButton ID="btn_send" runat="server" OnClick="btn_send_Click"  type="button" class="btn btn-primary btn btn-default btn-block"> SEND <i class="bi bi-chat-fill"></i></asp:LinkButton>
+            $('#displayname').val('<%=Session["UserName"]%>');
+            /*.val(prompt('Enter your name:', ''));*/
+            // Set initial focus to message input box.
+            $('#message').focus();
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                $('#sendmessage').click(function () {
+                    // Call the Send method on the hub. 
+                    chat.server.send($('#displayname').val(), $('#message').val());
+                    // Clear text box and reset focus for next comment. 
+                    $('#message').val('').focus();
+                });
+            });
+        });
+    </script>
+
+
+
+
+    <div class="container">
+
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="card m-0">
+
+                        <!-- Row start -->
+                        <div class="row no-gutters">
+
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+
+                                <div class="chat-container">
+                                    <ul class="chat-box chatContainerScroll">
+
+                                        <input type="hidden" id="displayname" />
+                                        <ul id="discussion">
+                                        </ul>
+                                    </ul>
+                                    <div class="form-group mt-3 mb-0">
+                                        <textarea id="message" class="form-control" type="text" rows="3" placeholder="Type your message here..."></textarea>
+                                        <input id="sendmessage" type="button" class="btn btn-primary btn btn-default btn-block" value='SEND' />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Row end -->
                     </div>
-                    <!-- Row end -->
+
                 </div>
 
             </div>
+            <!-- Row end -->
 
         </div>
-        <!-- Row end -->
+        <!-- Content wrapper end -->
 
     </div>
-    <!-- Content wrapper end -->
-
-</div>
-
-
 </asp:Content>

@@ -27,4 +27,16 @@ D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Deb
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csproj.CopyComplete
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.dll
 D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.pdb
-D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\obj\Debug\Party.DataAccess.csprojAssemblyReference.cache
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.Security.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Newtonsoft.Json.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Owin.dll
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Microsoft.Owin.Security.xml
+D:\Github\WebTabanliProgramalama_Party\Proje\ForumParty\Party.DataAccess\bin\Debug\Newtonsoft.Json.xml

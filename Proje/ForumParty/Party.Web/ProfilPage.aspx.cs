@@ -413,5 +413,10 @@ namespace Party.Web
                 pImage.ImageUrl = "<%# 'data: image / jpeg; base64,'"+ Convert.ToBase64String((byte[])image.ProfilImage)+"%>";
             }
         }
+
+        protected void btn_chat_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Messages/"+Session["UserName"].ToString());
+        }
     }
 }

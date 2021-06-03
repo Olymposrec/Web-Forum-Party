@@ -247,7 +247,20 @@ namespace Party.Web
 
         protected void btn_editProfil_Click(object sender, EventArgs e)
         {
-
+            if (Session["UserName"] != null)
+            {
+                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+                Label post = (Label)item.FindControl("Label5") as Label;
+                Repository<DataAccess.Posts> data = new Repository<DataAccess.Posts>();
+                int postID = int.Parse(post.Text);
+                var result = data.Find(x => x.PostID == postID);
+                data.Delete(result);
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                Response.Redirect("/LogInPage");
+            }
         }
 
         protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)

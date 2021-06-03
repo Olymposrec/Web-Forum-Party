@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="PostDetail.aspx.cs" Inherits="Party.Web.PostDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
+<%--    <link href="Resource/css/bootstrap.min.css" rel="stylesheet" />
     <script src="Resource/jquery/jquery.min.js"></script>
-    <script src="Resource/js/bootstrap.min.js"></script>
+    <script src="Resource/js/bootstrap.min.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
