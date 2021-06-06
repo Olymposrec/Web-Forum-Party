@@ -285,6 +285,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ControlPanel.aspx" />
+    <Content Include="ControlPanelEdit.aspx" />
     <Content Include="EditCommunity.aspx" />
     <Content Include="DataTest.aspx" />
     <Content Include="Default.aspx" />
@@ -1687,6 +1689,7 @@
     <Content Include="Scripts\jquery.signalR-2.4.2.min.js" />
     <Content Include="Scripts\signalRChatHubs.js" />
     <Content Include="Scripts\successAlert.js" />
+    <Content Include="WebService\AdminPanelService.asmx" />
     <Content Include="WebService\ASMXTest.asmx" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -1798,6 +1801,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ControlPanel.aspx.cs">
+      <DependentUpon>ControlPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel.aspx.designer.cs">
+      <DependentUpon>ControlPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanelEdit.aspx.cs">
+      <DependentUpon>ControlPanelEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanelEdit.aspx.designer.cs">
+      <DependentUpon>ControlPanelEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditCommunity.aspx.cs">
       <DependentUpon>EditCommunity.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1880,6 +1897,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebService\AdminPanelService.asmx.cs">
+      <DependentUpon>AdminPanelService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebService\ASMXTest.asmx.cs">
       <DependentUpon>ASMXTest.asmx</DependentUpon>

@@ -67,10 +67,22 @@ namespace Party.Web
         {
             route.MapPageRoute("Communities", "Communities", "~/Communities.aspx");
         }
+        void RouteControlPanel(RouteCollection route)
+        {
+            route.MapPageRoute("ControlPanel", "ControlPanel", "~/ControlPanel.aspx");
+        }
+        void RouteControlPanelEdit(RouteCollection route)
+        {
+            route.MapPageRoute("ControlPanelEdit", "ControlPanelEdit", "~/ControlPanelEdit.aspx");
+        }
 
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            RouteControlPanel(RouteTable.Routes);
+
+            RouteControlPanelEdit(RouteTable.Routes);
+            
             RouteCustom(RouteTable.Routes);
             
             RouteProfile(RouteTable.Routes);
