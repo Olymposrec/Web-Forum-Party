@@ -25,7 +25,7 @@ namespace Party.Web
                           {
                               Title = p.Title,
                               Description = p.Description,
-                              UploadDate = p.UploadDate,
+                              UploadDate = p.UploadDate,    
                               UserID = u.UserID,
                               UserName=u.UserName,
                               PostImage = p.PostImage,

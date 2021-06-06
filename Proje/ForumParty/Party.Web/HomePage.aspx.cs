@@ -17,7 +17,8 @@ namespace Party.Web
                 string specificCategory = RouteData.Values["CategoryName"].ToString();
                 DataAccess.ForumPartyEntities1 homePageData = new DataAccess.ForumPartyEntities1();
                 var result = (from p in homePageData.Posts
-                              where p.Categories.CategoryID == p.CategoryID && p.UserID == p.Users.UserID && p.PrivacyID != 1 && p.Categories.CategoryName==specificCategory
+                              where p.Categories.CategoryID == p.CategoryID && p.UserID == p.Users.UserID && p.PrivacyID != 1 && 
+                              p.Categories.CategoryName==specificCategory
                               select new
                               {
                                   PostID = p.PostID,

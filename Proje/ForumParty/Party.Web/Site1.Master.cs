@@ -34,9 +34,6 @@ namespace Party.Web
                 Repeater2_TrendComm.DataBind();
             }
 
-
-
-
             if (Session["UserName"] != null )
             {
                 lbl_session.Text = Session["UserName"].ToString();
@@ -44,7 +41,6 @@ namespace Party.Web
                 btn_logout.Visible = true;
                 lnkbtn_MessagePage.Visible = true;
                 lnkbtn_MainPage.Visible = true;
-                
 
                 if (Convert.ToInt32(Session["UserState"].ToString()) != 1)
                 {
@@ -78,12 +74,6 @@ namespace Party.Web
             lbl_session.Text = "";
             Response.Redirect("/LogInPage");
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void SearchData_Click(object sender, EventArgs e)
         {
             txt_search.Text = "Search Data Work";
@@ -135,8 +125,6 @@ namespace Party.Web
             {
                 Response.Redirect("/Messages/" + Session["UserName"].ToString());
             }
-
-
         }
         protected void HomePage_Click(object sender, EventArgs e)
         {
@@ -154,10 +142,6 @@ namespace Party.Web
             {
                 Response.Redirect("/Profile/" + Session["UserName"].ToString());
             }
-
-        }
-        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
 
         }
 

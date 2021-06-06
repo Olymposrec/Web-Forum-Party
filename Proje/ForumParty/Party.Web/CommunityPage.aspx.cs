@@ -183,8 +183,6 @@ namespace Party.Web
 
         }
 
-
-
         protected void lb_Detail_Click(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
@@ -202,7 +200,6 @@ namespace Party.Web
                 Session["ClickedPostID"] = postID;
                 Response.Redirect("/PostDetail/" + postID + "/" + userName);
             }
-
         }
 
 

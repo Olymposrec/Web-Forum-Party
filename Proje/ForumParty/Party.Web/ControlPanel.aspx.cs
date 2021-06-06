@@ -108,5 +108,10 @@ namespace Party.Web
         {
             Response.Redirect("/ControlPanelEdit");
         }
+
+        protected void lb_AdminPanel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ControlPanel");
+        }
     }
 }

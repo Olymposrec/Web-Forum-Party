@@ -84,11 +84,7 @@ namespace Party.Web
                         lbl_result.Text = "Please fill in the fields!";
                     }
 
-
                 }
-
-
-
             }
         }
     }

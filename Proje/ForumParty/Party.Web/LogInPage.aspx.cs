@@ -56,7 +56,8 @@ namespace Party.Web
 
         protected void register_Click(object sender, EventArgs e)
         {
-            if (txt_confirmPasswordRegister.Text == "" || txt_passwordRegister.Text == "" || txt_usermailRegister.Text == "" || txt_usernameRegister.Text == "")
+            if (txt_confirmPasswordRegister.Text == "" || txt_passwordRegister.Text == "" || txt_usermailRegister.Text == "" || 
+                txt_usernameRegister.Text == "")
             {
                 lbl_registerResultDanger.Text = "Text Boxes Cannot Be Empty!";
             }

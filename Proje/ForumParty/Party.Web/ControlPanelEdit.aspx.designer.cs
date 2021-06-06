@@ -78,6 +78,15 @@ namespace Party.Web
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_MainPage;
 
         /// <summary>
+        /// lb_AdminPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lb_AdminPanel;
+
+        /// <summary>
         /// btn_login control.
         /// </summary>
         /// <remarks>

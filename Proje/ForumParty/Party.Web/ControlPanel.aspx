@@ -13,7 +13,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   
+
 
     <link href="Resource/css/blog-home.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
@@ -57,6 +57,10 @@
                             <asp:LinkButton ID="lnkbtn_MainPage" runat="server" OnClick="lnkbtn_MainPage_Click" class="navbar-brand" type="button"><i class="bi bi-person-circle"></i> Profil</asp:LinkButton>
 
                         </li>
+                        <li class="nav-item">
+                            <asp:LinkButton ID="lb_AdminPanel" runat="server" OnClick="lb_AdminPanel_Click" class="navbar-brand" type="button"><i class="bi bi-gear-fill"></i> Control Panel</asp:LinkButton>
+
+                        </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -93,66 +97,66 @@
 
         <asp:Button ID="btn_RouteEditPanel" OnClick="btn_RouteEditPanel_Click" runat="server" Text="GO TO EDİT PANEL" class="btn btn-primary btn btn-default btn-block" />
 
-      
-
-     <script src=' <%=ResolveUrl("~/Scripts/jquery-3.6.0.min.js") %>'>  </script>
-     <script type="text/javascript">
-         $(document).ready(function () {
-             var currentPageNumber = 1;
-             loadData(currentPageNumber);
-
-             $(window).scroll(function () {
-
-                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-
-                     currentPageNumber += 1;
-                     loadData(currentPageNumber);
-
-                 }
-
-             });
-
-             function loadData(currentPage) {
-                 $.ajax({
-                     url: '/WebService/AdminPanelService.asmx/GetPostData',
-                     method: 'post',
-                     data: { pageNumber: currentPage, pageSize: 8 },
-                     dataType: 'json',
-                     success: function (data) {
-                         var postTable = $('#tbPost tbody');
-
-                         $(data).each(function (index, post) {
-                             postTable.append('<tr><td>' + post.PostID  +'</td><td>' +
-                                 post.UserID + '</td><td>' + post.CategoryID + '</td><td>' +
-                                 post.Title + '</td><td>' + post.Description + '</td><td>' +
-                                 post.PrivacyID + '</td><td>' + post.UploadDate + '</td><td>' +
-                                 post.Like + '</td><td>' + post.CommunityID +  '</td></tr>');
-                         })
-                     }
-                 });
-             }
-         });
-     </script>
-       
-    <h2>Sayfa Aşağıya Kaydıkça Veri Yükleme Alanı (Test)</h2>
-    <table id="tbPost" class="table table-dark">
-        <thead>
-            <tr>
-                <th scope="col">PostID</th>
-                <th scope="col">UserID</th>
-                <th scope="col">CategoryID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">PrivacyID</th>
-                <th scope="col">UploadDate</th>
-                <th scope="col">Like</th>
-                <th scope="col">CommunityID</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
 
 
-</form>
+        <script src=' <%=ResolveUrl("~/Scripts/jquery-3.6.0.min.js") %>'>  </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var currentPageNumber = 1;
+                loadData(currentPageNumber);
+
+                $(window).scroll(function () {
+
+                    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+                        currentPageNumber += 1;
+                        loadData(currentPageNumber);
+
+                    }
+
+                });
+
+                function loadData(currentPage) {
+                    $.ajax({
+                        url: '/WebService/AdminPanelService.asmx/GetPostData',
+                        method: 'post',
+                        data: { pageNumber: currentPage, pageSize: 8 },
+                        dataType: 'json',
+                        success: function (data) {
+                            var postTable = $('#tbPost tbody');
+
+                            $(data).each(function (index, post) {
+                                postTable.append('<tr><td>' + post.PostID + '</td><td>' +
+                                    post.UserID + '</td><td>' + post.CategoryID + '</td><td>' +
+                                    post.Title + '</td><td>' + post.Description + '</td><td>' +
+                                    post.PrivacyID + '</td><td>' + post.UploadDate + '</td><td>' +
+                                    post.Like + '</td><td>' + post.CommunityID + '</td></tr>');
+                            })
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <h2>Sayfa Aşağıya Kaydıkça Veri Yükleme Alanı (Test)</h2>
+        <table id="tbPost" class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">PostID</th>
+                    <th scope="col">UserID</th>
+                    <th scope="col">CategoryID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">PrivacyID</th>
+                    <th scope="col">UploadDate</th>
+                    <th scope="col">Like</th>
+                    <th scope="col">CommunityID</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+
+    </form>
 </body>
 </html>

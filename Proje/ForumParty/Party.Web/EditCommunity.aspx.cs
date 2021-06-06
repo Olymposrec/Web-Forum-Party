@@ -73,9 +73,6 @@ namespace Party.Web
 
                         lbl_result.Text = "Successfully Updated!";
 
-
-
-
                     }
                     else
                     {

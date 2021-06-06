@@ -43,7 +43,33 @@ namespace Party.Web
             }
 
 
+            if (Session["UserName"] != null)
+            {
+                lbl_session.Text = Session["UserName"].ToString();
+                btn_login.Visible = false;
+                btn_logout.Visible = true;
+                lnkbtn_MessagePage.Visible = true;
+                lnkbtn_MainPage.Visible = true;
 
+
+                if (Convert.ToInt32(Session["UserState"].ToString()) != 1)
+                {
+                    lb_AdminPanel.Visible = false;
+                }
+                else
+                {
+                    lb_AdminPanel.Visible = true;
+                }
+            }
+            else
+            {
+                lnkbtn_MainPage.Visible = false;
+                lnkbtn_MessagePage.Visible = false;
+                btn_logout.Visible = false;
+                btn_login.Visible = true;
+                lbl_session.Text = "";
+                lb_AdminPanel.Visible = false;
+            }
 
 
         }
@@ -325,6 +351,11 @@ namespace Party.Web
             GridView10_Users.DataSource = SqlDataSource2;
             GridView10_Users.DataBind();
             conn.Close();
+        }
+
+        protected void lb_AdminPanel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ControlPanel");
         }
     }
 }
