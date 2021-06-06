@@ -66,6 +66,10 @@
                     <asp:LinkButton ID="lnkbtn_MainPage" runat="server"  OnClick="ProfilePage_Click" class="navbar-brand" type="button"><i class="bi bi-person-circle"></i> Profil</asp:LinkButton>
                     
                 </li>
+                <li class="nav-item">
+                    <asp:LinkButton ID="lb_AdminPanel" runat="server"  OnClick="lb_AdminPanel_Click" class="navbar-brand" type="button"><i class="bi bi-gear-fill"></i> Control Panel</asp:LinkButton>
+                    
+                </li>
             </ul>
           <ul class="navbar-nav ml-auto">
              <li class="nav-item">
